@@ -165,7 +165,7 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
         bundle.putInt("width", mCropRect.width());
         bundle.putInt("height", mCropRect.height());
         bundle.putString("result", rawResult.getText());
-
+        Log.d(TAG, "handleDecode: result---" + rawResult.getText());
         startActivity(new Intent(CaptureActivity.this, ResultActivity.class).putExtras(bundle));
     }
 

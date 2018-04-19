@@ -1,5 +1,6 @@
 package com.example.jedreck.shopstock.OUTPart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.jedreck.shopstock.BarCode.TestScanActivity;
 import com.example.jedreck.shopstock.R;
 
 import java.util.ArrayList;
@@ -42,6 +44,8 @@ public class OutActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_in:
                     //mTextMessage.setText(R.string.title_in);
+                    Intent intent = new Intent(OutActivity.this, TestScanActivity.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_out:
                     mTextMessage.setText(R.string.title_out);
