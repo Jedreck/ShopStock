@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ShopStock</string>
+    <string name="title_activity_out">OutActivity</string>
+    <string name="title_shop">shop</string>
+    <string name="title_in">in</string>
+    <string name="title_out">out</string>
 </resources>
