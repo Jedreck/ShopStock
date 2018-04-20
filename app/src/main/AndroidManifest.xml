@@ -32,13 +32,18 @@
             tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BarCode.CaptureActivity" />
-        <activity android:name=".BarCode.ResultActivity" />
-        <activity android:name=".BarCode.TestScanActivity"></activity>
+        <activity android:name=".BarCode.CaptureActivity">
+
+        </activity>
+        <activity android:name=".BarCode.ResultActivity">
+
+        </activity>
+        <activity android:name=".BarCode.TestScanActivity">
+
+        </activity>
     </application>
 
 </manifest>
