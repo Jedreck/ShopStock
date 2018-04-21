@@ -80,10 +80,11 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
     {
         if(v.getId()==R.id.ruku)
         {
-            sendRequestWithOkHttp();
+           // sendRequestWithOkHttp();
             input=editText.getText().toString();
-            Intent intent=new Intent(StoreMain.this,Storeyes.class);
-            startActivity(intent);
+            sendRequestWithOkHttp();
+           // Intent intent=new Intent(StoreMain.this,Storeyes.class);
+           // startActivity(intent);
         }
     }
     private void sendRequestWithOkHttp(){
@@ -96,13 +97,13 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
                             .add("id",input)
                             .build();
                     Request request = new Request.Builder()
-                            .url("http://rb47h9.natappfree.cc/storage/SearchIDLite_Servlet")
+                            .url("http://pvrfix.natappfree.cc/storage/SearchIDLite_Servlet")
                             .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
                    String responseData = response.body().string();
                   parseJsonWithGSON(responseData,responseData);
-                  //  showResponse(responseData);
+                    //showResponse(responseData);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -116,7 +117,7 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                editText.setText(response);
+               // editText.setText(response);
                 for (StoreApp app :appList)
                 {
                     editText.setText(app.getId());
@@ -130,10 +131,10 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
 //            @Override
 //            public void run() {
 //                editText.setText(response);
-//                for (StoreApp app :appList)
-//                {
-//                    editText.setText(app.getId());
-//                }
+////                for (StoreApp app :appList)
+////                {
+////                    editText.setText(app.getId());
+////                }
 //            }
 //        });
 //    }
