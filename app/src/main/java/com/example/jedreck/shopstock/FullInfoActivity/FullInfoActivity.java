@@ -11,11 +11,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jedreck.shopstock.Bean.CommodityInfoBean;
 import com.example.jedreck.shopstock.Bean.EnterBean;
 import com.example.jedreck.shopstock.Bean.OutBean;
 import com.example.jedreck.shopstock.Internet.RequestManager;
+import com.example.jedreck.shopstock.MajorSearch.MainActivity;
 import com.example.jedreck.shopstock.R;
 
 import java.io.IOException;
@@ -104,6 +106,10 @@ public class FullInfoActivity extends Activity {
     }
 
     private void showInfo(){
+        if(responseData.equals("{}")){
+            Toast.makeText(this,"搜索无此商品",Toast.LENGTH_SHORT).show();
+            finish();
+        }
         //显示信息
         commodityInfoBean=CommodityInfoBean.json2Objective(responseData);
         id.setText(commodityInfoBean.getStock().getId());
