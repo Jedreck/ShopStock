@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jedreck.shopstock.BarCode.decode;
+package com.example.jedreck.shopstock.BarCodeActivity.decode;
 
 import java.util.Collection;
 import java.util.EnumSet;

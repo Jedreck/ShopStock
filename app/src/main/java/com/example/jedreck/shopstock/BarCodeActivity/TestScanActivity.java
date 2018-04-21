@@ -1,4 +1,4 @@
-package com.example.jedreck.shopstock.BarCode;
+package com.example.jedreck.shopstock.BarCodeActivity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

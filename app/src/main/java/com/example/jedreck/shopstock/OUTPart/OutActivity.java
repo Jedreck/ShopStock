@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.jedreck.shopstock.BarCode.TestScanActivity;
+import com.example.jedreck.shopstock.BarCodeActivity.TestScanActivity;
 import com.example.jedreck.shopstock.R;
 
 import java.util.ArrayList;

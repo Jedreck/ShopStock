@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jedreck.shopstock.BarCode.decode;
+package com.example.jedreck.shopstock.BarCodeActivity.decode;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
@@ -28,7 +28,7 @@ import android.os.Looper;
 import android.os.Message;
 
 
-import com.example.jedreck.shopstock.BarCode.CaptureActivity;
+import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
 import com.example.jedreck.shopstock.R;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
