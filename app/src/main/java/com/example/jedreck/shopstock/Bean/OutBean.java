@@ -20,7 +20,7 @@ public class OutBean {
     private String name;
 
 
-    public static OutBean objectFromData(String str) {
+    public static OutBean json2Objective(String str) {
         return new Gson().fromJson(str, OutBean.class);
     }
 

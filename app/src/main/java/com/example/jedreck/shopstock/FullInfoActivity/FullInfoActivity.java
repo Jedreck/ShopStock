@@ -22,7 +22,6 @@ import okhttp3.Response;
 public class FullInfoActivity extends Activity {
 
     private LoadingDialog loadingDialog;
-    private Intent intent;
     private String ID;
     private TextView id;
     private TextView name;
@@ -37,7 +36,7 @@ public class FullInfoActivity extends Activity {
         //获取相关必要资源
         loadingDialog = new LoadingDialog(FullInfoActivity.this);
         loadingDialog.show();
-        intent = getIntent();
+        Intent intent = getIntent();
         ID = intent.getStringExtra("id");
         id = findViewById(R.id.FullInfo_ID_Text);
         name = findViewById(R.id.FullInfo_Name_Text);
