@@ -17,7 +17,6 @@ import com.example.jedreck.shopstock.Bean.CommodityInfoBean;
 import com.example.jedreck.shopstock.Bean.EnterBean;
 import com.example.jedreck.shopstock.Bean.OutBean;
 import com.example.jedreck.shopstock.Internet.RequestManager;
-import com.example.jedreck.shopstock.MajorSearch.MainActivity;
 import com.example.jedreck.shopstock.R;
 
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class FullInfoActivity extends Activity {
     private CommodityInfoBean commodityInfoBean;
     private static final int MESSAGE_FLAG = 1;
 
-    @SuppressLint("HandlerLeak")
+    @SuppressLint("HandlerLeak")//接受线程返回的东西
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -71,11 +70,13 @@ public class FullInfoActivity extends Activity {
         name = findViewById(R.id.FullInfo_Name_Text);
         price = findViewById(R.id.FullInfo_Price_Text);
         stock = findViewById(R.id.FullInfo_Stock_Text);
+        Log.d("FullInfoActivity", "onCreate: "+ID);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        Log.d("FullInfoActivity", "inStart: "+ID);
         //开始显示进度条
         loadingDialog.show();
         //获取信息
@@ -83,6 +84,7 @@ public class FullInfoActivity extends Activity {
     }
 
     private void startGetInfo() {
+        Log.d("FullInfoActivity", "startGetInfo: "+ID);
         new Thread(new Runnable() {
             @Override
             public void run() {

@@ -37,6 +37,10 @@ import com.google.zxing.Result;
 public class CaptureActivity extends Activity implements SurfaceHolder.Callback {
     private static final String TAG = CaptureActivity.class.getSimpleName();
 
+    private int Flag;
+    public static final int TO_FULLINFO = 1;
+    public static final int TO_SEARCHLITE = 2;
+
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
     private InactivityTimer inactivityTimer;
@@ -84,7 +88,8 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
         animation.setRepeatCount(-1);
         animation.setRepeatMode(Animation.RESTART);
         scanLine.startAnimation(animation);
-
+        Intent intent = getIntent();
+        this.Flag = intent.getIntExtra("flag", 0);
     }
 
     @Override
@@ -173,7 +178,16 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
         bundle.putInt("height", mCropRect.height());
         bundle.putString("id", rawResult.getText());
         Log.d(TAG, "handleDecode: result---" + rawResult.getText());
-        startActivity(new Intent(CaptureActivity.this, FullInfoActivity.class).putExtras(bundle));
+        switch (Flag) {
+            case TO_FULLINFO:
+                startActivity(new Intent(CaptureActivity.this, FullInfoActivity.class).putExtras(bundle));
+                break;
+            case TO_SEARCHLITE:
+                Intent intent = new Intent();
+                intent.putExtra("id",rawResult.getText());
+                startActivity(intent);
+                break;
+        }
         finish();
     }
 
