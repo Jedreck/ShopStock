@@ -29,22 +29,30 @@
         <activity
             android:name=".OUTPart.OutActivity"
             android:label="@string/title_activity_out"
-            tools:ignore="InnerclassSeparator">
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask">
         </activity>
         <activity
             android:name=".BarCodeActivity.CaptureActivity"
-            tools:ignore="InnerclassSeparator">
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask">
         </activity>
+            android:name=".BarCodeActivity.CaptureActivity"
+            tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".BarCodeActivity.ResultActivity"
-            tools:ignore="InnerclassSeparator">
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask">
         </activity>
         <activity
             android:name=".BarCodeActivity.TestScanActivity"
-            tools:ignore="InnerclassSeparator">
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask">
         </activity>
         <activity
             android:name=".MajorSearch.MainActivity"
+            android:label="@string/title_activity_main"
+            android:launchMode="singleTask">
             android:label="@string/title_activity_main"
             tools:ignore="InnerclassSeparator">
             <intent-filter>
@@ -54,8 +62,8 @@
         </activity>
         <activity android:name=".FullInfoActivity.FullInfoActivity"
             android:theme="@style/Theme.Design.NoActionBar"
-            tools:ignore="InnerclassSeparator" >
-        </activity>
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>
