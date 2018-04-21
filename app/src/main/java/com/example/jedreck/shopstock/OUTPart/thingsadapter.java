@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.jedreck.shopstock.Bean.OutBean;
 import com.example.jedreck.shopstock.R;
 
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 public class thingsadapter extends RecyclerView.Adapter<thingsadapter.ViewHolder>{
     private Context mContext;
-    private List<things> mthingslist;
+    private List<OutBean> mthingslist;
     static class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
         ImageView thingsimage;
@@ -32,7 +33,7 @@ public class thingsadapter extends RecyclerView.Adapter<thingsadapter.ViewHolder
 
         }
     }
-    public thingsadapter(List<things> thingslist){
+    public thingsadapter(List<OutBean> thingslist){
         mthingslist=thingslist;
     }
 
@@ -46,9 +47,12 @@ public class thingsadapter extends RecyclerView.Adapter<thingsadapter.ViewHolder
     }
     @Override
     public void onBindViewHolder(ViewHolder holder,int position){
-        things th=mthingslist.get(position);
-        holder.thingsname.setText(th.getTname());
-        Glide.with(mContext).load(th.getimageid()).into(holder.thingsimage);
+        OutBean th=mthingslist.get(position);
+        String context="商品编号："+th.getId()+System.getProperty("line.separator")+"商品名称："+th.getName()+System.getProperty("line.separator")+
+                "出货时间:"+th.getTime()+System.getProperty("line.separator")+ "商品单价："+th.getPrice_out()+System.getProperty("line.separator")+
+                "销量:"+th.getNum()+System.getProperty("line.separator");
+        holder.thingsname.setText(context);
+        //Glide.with(mContext).load().into(holder.thingsimage);
     }
     @Override
     public int getItemCount(){

@@ -10,4 +10,8 @@
     <string name="Name_Text">品名：</string>
     <string name="Price_Text">售价：</string>
     <string name="Stock_Text">库存：</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
