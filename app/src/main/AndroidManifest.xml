@@ -38,13 +38,16 @@
         </activity>
         <activity
             android:name=".BarCodeActivity.CaptureActivity"
-            tools:ignore="InnerclassSeparator"></activity>
+            tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".BarCodeActivity.ResultActivity"
-            tools:ignore="InnerclassSeparator"></activity>
+            tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".BarCodeActivity.TestScanActivity"
-            tools:ignore="InnerclassSeparator"></activity>
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".FullInfoActivity.FullInfoActivity"
+            android:theme="@style/Theme.Design.NoActionBar"
+            tools:ignore="InnerclassSeparator" />
     </application>
 
 </manifest>

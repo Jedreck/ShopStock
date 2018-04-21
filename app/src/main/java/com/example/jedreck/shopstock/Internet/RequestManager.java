@@ -1,5 +1,6 @@
 package com.example.jedreck.shopstock.Internet;
 
+import okhttp3.FormBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
@@ -21,12 +22,24 @@ public class RequestManager {
                 .build();
     }
 
-    //获取商品完整信息
+    //获取商品完整信息-01
     public static Request getIDFull(RequestBody requestBody) {
         return new Request.Builder()
                 .url(URL + "SearchIDFull_Servlet")
                 .post(requestBody)
                 .build();
+    }
+
+    //获取商品完整信息-02
+    public static Request getIDFull(String id) {
+        RequestBody requestBody = new FormBody.Builder()
+                .add("id",id)
+                .build();
+        Request request= new Request.Builder()
+                .url(URL + "SearchIDFull_Servlet")
+                .post(requestBody)
+                .build();
+        return request;
     }
 
     //搜索商品的name或id
