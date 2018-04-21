@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
 import com.example.jedreck.shopstock.BarCodeActivity.TestScanActivity;
 import com.example.jedreck.shopstock.Bean.StockBean;
+import com.example.jedreck.shopstock.FullInfoActivity.FullInfoActivity;
 import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.OUTPart.OutActivity;
 import com.example.jedreck.shopstock.R;
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 StockBean stockBean = stockBeanList.get(position);
-                intent=new Intent(MainActivity.this,TestScanActivity.class);
+                intent=new Intent(MainActivity.this, FullInfoActivity.class);
                 startActivity(intent);
             }
         });
