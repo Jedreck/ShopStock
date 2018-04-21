@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.example.jedreck.shopstock.Bean.EnterBean;
 import com.example.jedreck.shopstock.Bean.OutBean;
 import com.example.jedreck.shopstock.R;
@@ -40,7 +41,7 @@ public class EnterOrOut_Adapter extends RecyclerView.Adapter<EnterOrOut_Adapter.
                 break;
             case OUTBEAN_FLAG:
                 OutBean outBean = outBeans.get(position);
-                holder.Image.setImageResource(R.drawable.enterstock);
+                holder.Image.setImageResource(R.drawable.outstock);
                 holder.time.setText(outBean.getTime());
                 holder.num.setText(outBean.getNum());
                 holder.price.setText(outBean.getPrice_out());
@@ -59,7 +60,7 @@ public class EnterOrOut_Adapter extends RecyclerView.Adapter<EnterOrOut_Adapter.
         return enterBeans.size();
     }
 
-    public EnterOrOut_Adapter(List<?> list,int flag){
+    public EnterOrOut_Adapter(List<?> list, int flag){
         Flag=flag;
         if(flag==ENTERBEAN_FLAG){
             enterBeans= (List<EnterBean>) list;

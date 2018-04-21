@@ -6,10 +6,10 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+
 
 import com.example.jedreck.shopstock.R;
 
@@ -75,5 +75,6 @@ public class LoadingDialog extends Dialog {
     protected void onStop() {
         super.onStop();
         animationTimer.cancel();
+        this.dismiss();
     }
 }
