@@ -14,10 +14,10 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
 
     <application
         android:allowBackup="true"
@@ -30,19 +30,25 @@
             android:name=".OUTPart.OutActivity"
             android:label="@string/title_activity_out"
             tools:ignore="InnerclassSeparator">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".BarCode.CaptureActivity" />
+        <activity android:name=".BarCode.ResultActivity" />
+        <activity android:name=".BarCode.TestScanActivity" />
+        <activity android:name=".Store.StoreMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BarCode.CaptureActivity">
-
-        </activity>
-        <activity android:name=".BarCode.ResultActivity">
-
-        </activity>
-        <activity android:name=".BarCode.TestScanActivity">
-
+        <activity
+            android:name=".Store.Storeyes"
+            android:label="@string/title_activity_storeyes">
         </activity>
     </application>
 

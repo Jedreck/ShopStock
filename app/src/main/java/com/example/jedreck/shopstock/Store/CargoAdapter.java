@@ -1,4 +1,4 @@
-package com.example.jedreck.shopstock.OUTPart.store;
+package com.example.jedreck.shopstock.Store;
 
 import android.content.Context;
 import android.view.LayoutInflater;

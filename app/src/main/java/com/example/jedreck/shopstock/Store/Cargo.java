@@ -1,4 +1,4 @@
-package com.example.jedreck.shopstock.OUTPart.store;
+package com.example.jedreck.shopstock.Store;
 
 /**
  * Created by zjx on 2018/4/20.

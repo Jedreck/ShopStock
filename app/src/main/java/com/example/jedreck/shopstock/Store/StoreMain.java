@@ -1,24 +1,38 @@
-package com.example.jedreck.shopstock.OUTPart.store;
+package com.example.jedreck.shopstock.Store;
 
-import android.drm.DrmStore;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.jedreck.shopstock.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoreMain extends AppCompatActivity {
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class StoreMain extends AppCompatActivity implements View.OnClickListener{
 
     private TextView mTextMessage;
     private List<Cargo> cargoList=new ArrayList<>();
+    private EditText editText;
+    String input;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -40,6 +54,7 @@ public class StoreMain extends AppCompatActivity {
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +71,72 @@ public class StoreMain extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        Button button=(Button) findViewById(R.id.ruku);
+        editText=(EditText) findViewById(R.id.shuru);
+        button.setOnClickListener(this);
     }
+    @Override
+    public void onClick(View v)
+    {
+        if(v.getId()==R.id.ruku)
+        {
+            sendRequestWithOkHttp();
+            input=editText.getText().toString();
+            Intent intent=new Intent(StoreMain.this,Storeyes.class);
+            startActivity(intent);
+        }
+    }
+    private void sendRequestWithOkHttp(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    OkHttpClient client= new OkHttpClient();
+                    RequestBody requestBody = new FormBody.Builder()
+                            .add("id",input)
+                            .build();
+                    Request request = new Request.Builder()
+                            .url("http://rb47h9.natappfree.cc/storage/SearchIDLite_Servlet")
+                            .post(requestBody)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                   String responseData = response.body().string();
+                  parseJsonWithGSON(responseData,responseData);
+                  //  showResponse(responseData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+    public void parseJsonWithGSON(String jsonData,final String response)
+    {
+        Gson gson=new Gson();
+        final List<StoreApp> appList=gson.fromJson(jsonData, new TypeToken<List<StoreApp>>() {}.getType());
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                editText.setText(response);
+                for (StoreApp app :appList)
+                {
+                    editText.setText(app.getId());
+                }
+            }
+        });
+    }
+//    public void showResponse(final String response)
+//    {
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                editText.setText(response);
+//                for (StoreApp app :appList)
+//                {
+//                    editText.setText(app.getId());
+//                }
+//            }
+//        });
+//    }
     private void initCargo()
     {
         Cargo binggan=new Cargo("雀巢脆脆鲨威化奶香巧克力夹心饼干500g散装休闲食品零食包邮喜糖20.0/件",R.drawable.binggan);
