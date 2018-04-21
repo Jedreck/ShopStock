@@ -1,6 +1,7 @@
 package com.example.jedreck.shopstock.Bean;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.List;
 
@@ -17,6 +18,10 @@ public class CommodityInfoBean {
 
     public static CommodityInfoBean objectFromData(String str) {
         return new Gson().fromJson(str, CommodityInfoBean.class);
+    }
+
+    public static CommodityInfoBean json2Objective(String data) {
+        return new Gson().fromJson(data,CommodityInfoBean.class);
     }
 
     public static String object2Json(CommodityInfoBean commodityInfoBean) {

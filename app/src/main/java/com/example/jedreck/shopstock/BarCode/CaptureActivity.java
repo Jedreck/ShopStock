@@ -3,22 +3,29 @@ package com.example.jedreck.shopstock.BarCode;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.jedreck.shopstock.BarCode.camera.CameraManager;
 import com.example.jedreck.shopstock.BarCode.decode.DecodeThread;
@@ -53,6 +60,9 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
 
     private boolean isHasSurface = false;
 
+    /* 相机请求码 */
+    private static final int REQUEST_CAMERA = 0;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -75,6 +85,7 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
         animation.setRepeatCount(-1);
         animation.setRepeatMode(Animation.RESTART);
         scanLine.startAnimation(animation);
+
     }
 
     @Override
@@ -152,11 +163,8 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
      * A valid barcode has been found, so give an indication of success and show
      * the results.
      *
-     * @param rawResult
-     *            The contents of the barcode.
-     *
-     * @param bundle
-     *            The extras
+     * @param rawResult The contents of the barcode.
+     * @param bundle    The extras
      */
     public void handleDecode(Result rawResult, Bundle bundle) {
         inactivityTimer.onActivity();
@@ -170,6 +178,14 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {
+        /*相机权限*/
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            //申请WRITE_EXTERNAL_STORAGE权限
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
+                    1);
+        }
+
         if (surfaceHolder == null) {
             throw new IllegalStateException("No SurfaceHolder provided");
         }
@@ -184,16 +200,15 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
             if (handler == null) {
                 handler = new CaptureActivityHandler(this, cameraManager, DecodeThread.ALL_MODE);
             }
-
             initCrop();
         } catch (IOException ioe) {
             Log.w(TAG, ioe);
-            displayFrameworkBugMessageAndExit();
+            //displayFrameworkBugMessageAndExit();
         } catch (RuntimeException e) {
             // Barcode Scanner has seen crashes in the wild of this variety:
             // java.?lang.?RuntimeException: Fail to connect to camera service
             Log.w(TAG, "Unexpected error initializing camera", e);
-            displayFrameworkBugMessageAndExit();
+            //displayFrameworkBugMessageAndExit();
         }
     }
 
@@ -211,7 +226,6 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
 
         });
         builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-
             @Override
             public void onCancel(DialogInterface dialog) {
                 finish();
@@ -277,4 +291,25 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
         }
         return 0;
     }
+
+    /*权限申请结果*/
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        doNext(requestCode, grantResults);
+    }
+
+    private void doNext(int requestCode, int[] grantResults) {
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission Granted
+
+            } else {
+                // Permission Denied
+                //  displayFrameworkBugMessageAndExit();
+                Toast.makeText(this, "请在应用管理中打开“相机”访问权限！", Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }
+    }
+
 }
