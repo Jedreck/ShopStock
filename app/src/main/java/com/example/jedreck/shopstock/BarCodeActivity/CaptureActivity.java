@@ -1,4 +1,4 @@
-package com.example.jedreck.shopstock.BarCode;
+package com.example.jedreck.shopstock.BarCodeActivity;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -12,13 +12,11 @@ import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -27,11 +25,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.jedreck.shopstock.BarCode.camera.CameraManager;
-import com.example.jedreck.shopstock.BarCode.decode.DecodeThread;
-import com.example.jedreck.shopstock.BarCode.utils.BeepManager;
-import com.example.jedreck.shopstock.BarCode.utils.CaptureActivityHandler;
-import com.example.jedreck.shopstock.BarCode.utils.InactivityTimer;
+import com.example.jedreck.shopstock.BarCodeActivity.camera.CameraManager;
+import com.example.jedreck.shopstock.BarCodeActivity.decode.DecodeThread;
+import com.example.jedreck.shopstock.BarCodeActivity.utils.BeepManager;
+import com.example.jedreck.shopstock.BarCodeActivity.utils.CaptureActivityHandler;
+import com.example.jedreck.shopstock.BarCodeActivity.utils.InactivityTimer;
 import com.example.jedreck.shopstock.R;
 import com.google.zxing.Result;
 

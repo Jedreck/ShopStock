@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jedreck.shopstock.BarCode.decode;
+package com.example.jedreck.shopstock.BarCodeActivity.decode;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,7 +26,7 @@ import java.util.concurrent.CountDownLatch;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.example.jedreck.shopstock.BarCode.CaptureActivity;
+import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 

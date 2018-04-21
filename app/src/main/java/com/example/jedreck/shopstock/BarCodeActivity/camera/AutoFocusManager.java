@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jedreck.shopstock.BarCode.camera;
+package com.example.jedreck.shopstock.BarCodeActivity.camera;
 
 import java.util.ArrayList;
 import java.util.Collection;

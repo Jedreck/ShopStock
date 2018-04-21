@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jedreck.shopstock.BarCode.utils;
+package com.example.jedreck.shopstock.BarCodeActivity.utils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,9 +23,9 @@ import android.os.Handler;
 import android.os.Message;
 
 
-import com.example.jedreck.shopstock.BarCode.CaptureActivity;
-import com.example.jedreck.shopstock.BarCode.camera.CameraManager;
-import com.example.jedreck.shopstock.BarCode.decode.DecodeThread;
+import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
+import com.example.jedreck.shopstock.BarCodeActivity.camera.CameraManager;
+import com.example.jedreck.shopstock.BarCodeActivity.decode.DecodeThread;
 import com.example.jedreck.shopstock.R;
 import com.google.zxing.Result;
 
