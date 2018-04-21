@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.jedreck.shopstock.BarCodeActivity.TestScanActivity;
+import com.example.jedreck.shopstock.Bean.OutBean;
+import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.R;
 
 import java.util.ArrayList;
