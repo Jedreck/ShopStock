@@ -80,9 +80,9 @@ public class OutBean {
         return this.getId() + "-" + this.getNum();
     }
 
-    public static void main(String[] args) {
-        String s = "[{\"id\":\"6907992500133\",\"time\":\"2018-04-20 14:48:24.0\",\"num\":\"10.0\",\"price_out\":\"25.0\"},{\"id\":\"6907992500133\",\"time\":\"2018-04-20 14:48:24.0\",\"num\":\"10.0\",\"price_out\":\"25.0\"}]";
-        List<OutBean> list = OutBean.json2Objectives(s);
-        System.out.println(list.get(0).toString() + list.get(1).toString());
-    }
+//    public static void main(String[] args) {
+//        String s = "[{\"id\":\"6907992500133\",\"time\":\"2018-04-20 14:48:24.0\",\"num\":\"10.0\",\"price_out\":\"25.0\"},{\"id\":\"6907992500133\",\"time\":\"2018-04-20 14:48:24.0\",\"num\":\"10.0\",\"price_out\":\"25.0\"}]";
+//        List<OutBean> list = OutBean.json2Objectives(s);
+//        System.out.println(list.get(0).toString() + list.get(1).toString());
+//    }
 }
