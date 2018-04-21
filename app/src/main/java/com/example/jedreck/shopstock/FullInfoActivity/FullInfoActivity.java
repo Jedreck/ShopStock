@@ -106,12 +106,14 @@ public class FullInfoActivity extends Activity {
     }
 
     private void showInfo(){
-        if(responseData.equals("{}")){
-            Toast.makeText(this,"搜索无此商品",Toast.LENGTH_SHORT).show();
-            finish();
-        }
         //显示信息
         commodityInfoBean=CommodityInfoBean.json2Objective(responseData);
+        if(commodityInfoBean==null){
+            Toast.makeText(this,"搜索无此商品",Toast.LENGTH_SHORT).show();
+//            this.onDestroy();
+            finish();
+            return;
+        }
         id.setText(commodityInfoBean.getStock().getId());
         name.setText(commodityInfoBean.getStock().getName());
         price.setText(commodityInfoBean.getStock().getPrice());
