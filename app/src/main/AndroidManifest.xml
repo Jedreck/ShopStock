@@ -19,7 +19,6 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,25 +30,32 @@
             android:name=".OUTPart.OutActivity"
             android:label="@string/title_activity_out"
             tools:ignore="InnerclassSeparator">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".BarCodeActivity.CaptureActivity"
+            tools:ignore="InnerclassSeparator">
+        </activity>
+        <activity
+            android:name=".BarCodeActivity.ResultActivity"
+            tools:ignore="InnerclassSeparator">
+        </activity>
+        <activity
+            android:name=".BarCodeActivity.TestScanActivity"
+            tools:ignore="InnerclassSeparator">
+        </activity>
+        <activity
+            android:name=".MajorSearch.MainActivity"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".BarCode.CaptureActivity"
-            tools:ignore="InnerclassSeparator">
-
-        </activity>
-        <activity
-            android:name=".BarCode.ResultActivity"
-            tools:ignore="InnerclassSeparator">
-
-        </activity>
-        <activity
-            android:name=".BarCode.TestScanActivity"
-            tools:ignore="InnerclassSeparator">
 
         </activity>
     </application>
