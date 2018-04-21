@@ -31,9 +31,9 @@ public class StockBeanAdapter extends ArrayAdapter<StockBean> {
         ViewHolder viewHolder;
         if (convertView == null) {
             view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
-//          view = LayoutInflater.from(getContext()).inflate(R.layout.stockbean_item, parent, false);
+//            view = LayoutInflater.from(getContext()).inflate(R.layout.stockbean_item, parent, false);
             viewHolder = new ViewHolder();
-            viewHolder.id = (TextView) view.findViewById (R.id.id);
+            viewHolder.pic=view.findViewById(R.id.pic);
             viewHolder.name = (TextView) view.findViewById (R.id.name);
             viewHolder.price=view.findViewById(R.id.price);
             viewHolder.stock=view.findViewById(R.id.stock);
@@ -42,7 +42,7 @@ public class StockBeanAdapter extends ArrayAdapter<StockBean> {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag(); // 重新获取ViewHolder
         }
-        viewHolder.id.setText(stockBean.getId());
+        viewHolder.pic.setImageResource(R.drawable.key);
         viewHolder.name.setText(stockBean.getName());
         viewHolder.price.setText(stockBean.getPrice());
         viewHolder.stock.setText(stockBean.getStock());
@@ -50,8 +50,7 @@ public class StockBeanAdapter extends ArrayAdapter<StockBean> {
     }
 
     class ViewHolder {
-
-        TextView id;
+        ImageView pic;
         TextView name;
         TextView price;
         TextView stock;
