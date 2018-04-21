@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 StockBean stockBean = stockBeanList.get(position);
                 intent=new Intent(MainActivity.this, FullInfoActivity.class);
+                intent.putExtra("id",stockBean.getId());
                 startActivity(intent);
             }
         });
