@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.jedreck.shopstock.Bean.StockBean;
 import com.example.jedreck.shopstock.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -101,30 +102,39 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
                             .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
-                   String responseData = response.body().string();
-                  parseJsonWithGSON(responseData,responseData);
-                    //showResponse(responseData);
+                  String responseData = response.body().string();
+                    String r=StockBean.object2Objective(responseData).getId();
+                if(r=="000000")
+                {
+
+                }
+                if(r!="000000")
+                {
+                    Intent intent=new Intent(StoreMain.this,Storeyes.class);
+                    startActivity(intent);
+                }
+//                    showResponse(r);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
     }
-    public void parseJsonWithGSON(String jsonData,final String response)
-    {
-        Gson gson=new Gson();
-        final List<StoreApp> appList=gson.fromJson(jsonData, new TypeToken<List<StoreApp>>() {}.getType());
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-               // editText.setText(response);
-                for (StoreApp app :appList)
-                {
-                    editText.setText(app.getId());
-                }
-            }
-        });
-    }
+//    public void parseJsonWithGSON(String jsonData,final String response)
+//    {
+//        Gson gson=new Gson();
+//        final List<StoreApp> appList=gson.fromJson(jsonData, new TypeToken<List<StoreApp>>() {}.getType());
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//               // editText.setText(response);
+//                for (StoreApp app :appList)
+//                {
+//                    editText.setText(app.getId());
+//                }
+//            }
+//        });
+//    }
 //    public void showResponse(final String response)
 //    {
 //        runOnUiThread(new Runnable() {

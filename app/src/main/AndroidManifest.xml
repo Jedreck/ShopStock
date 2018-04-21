@@ -36,9 +36,6 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".BarCode.CaptureActivity" />
-        <activity android:name=".BarCode.ResultActivity" />
-        <activity android:name=".BarCode.TestScanActivity" />
         <activity android:name=".Store.StoreMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,9 +54,11 @@
         <activity android:name=".FullInfoActivity.FullInfoActivity"
             android:theme="@style/Theme.Design.NoActionBar"
             tools:ignore="InnerclassSeparator" />
-            android:name=".Store.Storeyes"
+            <activity android:name=".Store.Storeyes"
             android:label="@string/title_activity_storeyes">
-        </activity>
+            </activity>
+
+
     </application>
 
 </manifest>
