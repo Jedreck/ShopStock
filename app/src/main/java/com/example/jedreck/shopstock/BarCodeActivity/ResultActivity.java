@@ -1,4 +1,4 @@
-package com.example.jedreck.shopstock.BarCode;
+package com.example.jedreck.shopstock.BarCodeActivity;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-import com.example.jedreck.shopstock.BarCode.decode.DecodeThread;
+import com.example.jedreck.shopstock.BarCodeActivity.decode.DecodeThread;
 import com.example.jedreck.shopstock.R;
 
 public class ResultActivity extends Activity {

@@ -11,26 +11,26 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.jedreck.shopstock.BarCode.TestScanActivity;
+import com.example.jedreck.shopstock.BarCodeActivity.TestScanActivity;
+import com.example.jedreck.shopstock.Bean.OutBean;
+import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
 
 public class OutActivity extends AppCompatActivity {
 
     //private TextView mTextMessage;
     //private DrawerLayout mDrawerLayout;
     private thingsadapter adapter;
-    private things[] ths={new things("book",R.drawable.our,"s001",50),
-            new things("pen",R.drawable.pencil,"s002",40),
-            new things("clock",R.drawable.key,"s003",90),
-            new things("shoes",R.drawable.key,"s004",20),
-            new things("phone",R.drawable.our,"s005",70)
-    };
 
-    private List<things> thingsList=new ArrayList<>();
+
+    private List<OutBean> thingsList=new ArrayList<>();
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -54,7 +54,8 @@ public class OutActivity extends AppCompatActivity {
             return false;
         }
     };
-
+    RecyclerView recyclerView;
+    GridLayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,21 +65,42 @@ public class OutActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-
-        initthings();
-        RecyclerView recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
-        GridLayoutManager layoutManager=new GridLayoutManager(this,1);
+        recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
+        layoutManager=new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(layoutManager);
-        adapter=new thingsadapter(thingsList);
-        recyclerView.setAdapter(adapter);
+        sendRequestWithOkHttp();
     }
-    public void initthings(){
-        thingsList.clear();
-        for(int i=0;i<10;i++){
-            Random random=new Random();
-            int index=random.nextInt(ths.length);
-            thingsList.add(ths[index]);
-        }
+
+    private void sendRequestWithOkHttp() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    OkHttpClient client=new OkHttpClient();
+                    okhttp3.Request request= RequestManager.getSaleWell();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    thingsList.clear();
+                    thingsList=OutBean.json2Objectives(responseData);
+                    showResponse(responseData);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
+    private  void showResponse(final String responseData)
+    {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                // 在这里进行UI操作，将结果显示到界面上
+                adapter=new thingsadapter(thingsList);
+                recyclerView.setAdapter(adapter);
+            }
+        });
+    }
+
 
 }

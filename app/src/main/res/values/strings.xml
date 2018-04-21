@@ -8,4 +8,14 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="permission_camera_rationale">需要相机权限才能进行相机预览。</string>
+    <string name="ok">确定</string>
+    <string name="BarCode_Text">条码：</string>
+    <string name="Name_Text">品名：</string>
+    <string name="Price_Text">售价：</string>
+    <string name="Stock_Text">库存：</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

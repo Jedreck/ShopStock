@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jedreck.shopstock.BarCode.utils;
+package com.example.jedreck.shopstock.BarCodeActivity.utils;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -29,7 +29,7 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.example.jedreck.shopstock.BarCode.CaptureActivity;
+import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
 import com.example.jedreck.shopstock.R;
 
 /**

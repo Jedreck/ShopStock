@@ -42,11 +42,21 @@
         <activity android:name=".Store.StoreMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".BarCodeActivity.CaptureActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".BarCodeActivity.ResultActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity
+            android:name=".BarCodeActivity.TestScanActivity"
+            tools:ignore="InnerclassSeparator" />
+        <activity android:name=".FullInfoActivity.FullInfoActivity"
+            android:theme="@style/Theme.Design.NoActionBar"
+            tools:ignore="InnerclassSeparator" />
             android:name=".Store.Storeyes"
             android:label="@string/title_activity_storeyes">
         </activity>

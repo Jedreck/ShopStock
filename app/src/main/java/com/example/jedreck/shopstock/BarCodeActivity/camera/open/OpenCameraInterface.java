@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jedreck.shopstock.BarCode.camera.open;
+package com.example.jedreck.shopstock.BarCodeActivity.camera.open;
 
 import android.hardware.Camera;
 import android.util.Log;

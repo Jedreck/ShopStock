@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jedreck.shopstock.BarCode.camera;
+package com.example.jedreck.shopstock.BarCodeActivity.camera;
 
 import java.io.IOException;
 
@@ -26,7 +26,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
-import com.example.jedreck.shopstock.BarCode.camera.open.OpenCameraInterface;
+import com.example.jedreck.shopstock.BarCodeActivity.camera.open.OpenCameraInterface;
 
 /**
  * This object wraps the Camera service object and expects to be the only one

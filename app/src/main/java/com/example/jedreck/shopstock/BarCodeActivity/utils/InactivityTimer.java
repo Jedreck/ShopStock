@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.jedreck.shopstock.BarCode.utils;
+package com.example.jedreck.shopstock.BarCodeActivity.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
