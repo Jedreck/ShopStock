@@ -83,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="入库信息"/>
-    <ListView
+    <android.support.v7.app.AlertController.RecycleListView
         android:id="@+id/ShowEntry_List"
         android:layout_width="match_parent"
         android:layout_height="212dp" />
@@ -91,9 +91,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="出库信息"/>
-    <ListView
+
+    <android.support.v7.app.AlertController.RecycleListView
         android:id="@+id/ShowOut_List"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="182dp" />
 
 </LinearLayout>

@@ -30,6 +30,7 @@ import com.example.jedreck.shopstock.BarCodeActivity.decode.DecodeThread;
 import com.example.jedreck.shopstock.BarCodeActivity.utils.BeepManager;
 import com.example.jedreck.shopstock.BarCodeActivity.utils.CaptureActivityHandler;
 import com.example.jedreck.shopstock.BarCodeActivity.utils.InactivityTimer;
+import com.example.jedreck.shopstock.FullInfoActivity.FullInfoActivity;
 import com.example.jedreck.shopstock.R;
 import com.google.zxing.Result;
 
@@ -170,9 +171,10 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
 
         bundle.putInt("width", mCropRect.width());
         bundle.putInt("height", mCropRect.height());
-        bundle.putString("result", rawResult.getText());
+        bundle.putString("id", rawResult.getText());
         Log.d(TAG, "handleDecode: result---" + rawResult.getText());
-        startActivity(new Intent(CaptureActivity.this, ResultActivity.class).putExtras(bundle));
+        startActivity(new Intent(CaptureActivity.this, FullInfoActivity.class).putExtras(bundle));
+        finish();
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {

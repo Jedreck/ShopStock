@@ -4,6 +4,8 @@ package com.example.jedreck.shopstock.FullInfoActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 
 import com.example.jedreck.shopstock.Bean.CommodityInfoBean;
@@ -77,9 +79,17 @@ public class FullInfoActivity extends Activity {
     }
 
     private void showEnterInfo(List<EnterBean> enterBeans){
-
+        RecyclerView recyclerView = findViewById(R.id.ShowEntry_List);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        EnterOrOut_Adapter enterOrOut_adapter = new EnterOrOut_Adapter(enterBeans,EnterOrOut_Adapter.ENTERBEAN_FLAG);
+        recyclerView.setAdapter(enterOrOut_adapter);
     }
     private void showOutInfo(List<OutBean> outBeans){
-
+        RecyclerView recyclerView = findViewById(R.id.ShowOut_List);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        EnterOrOut_Adapter enterOrOut_adapter = new EnterOrOut_Adapter(outBeans,EnterOrOut_Adapter.OUTBEAN_FLAG);
+        recyclerView.setAdapter(enterOrOut_adapter);
     }
 }
