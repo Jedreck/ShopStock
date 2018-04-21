@@ -1,6 +1,7 @@
 package com.example.jedreck.shopstock.MajorSearch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
@@ -8,13 +9,20 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
+import com.example.jedreck.shopstock.BarCodeActivity.TestScanActivity;
 import com.example.jedreck.shopstock.Bean.StockBean;
 import com.example.jedreck.shopstock.Internet.RequestManager;
+import com.example.jedreck.shopstock.OUTPart.OutActivity;
 import com.example.jedreck.shopstock.R;
 
 import java.util.ArrayList;
@@ -29,9 +37,9 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     private List<StockBean> stockBeanList=new ArrayList<>();
-    TextView textview;
     StockBeanAdapter adapter;
     ListView listView;
+    Intent intent;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -43,30 +51,57 @@ public class MainActivity extends AppCompatActivity {
                     //mTextMessage.setText(R.string.title_shop);
                     return true;
                 case R.id.navigation_in:
-                    //mTextMessage.setText(R.string.title_in)
+                    //intent = new Intent(MainActivity.this, InActivity.class);
+                    //startActivity(intent);
                     return true;
                 case R.id.navigation_out:
-                    //mTextMessage.setText(R.string.title_out);
+                    intent = new Intent(MainActivity.this, OutActivity.class);
+                    startActivity(intent);
                     return true;
             }
             return false;
         }
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //mTextMessage = (TextView) findViewById(R.id.message);
+        ImageView imageView=(ImageView) findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(MainActivity.this, CaptureActivity.class);
+                startActivity(intent);
+            }
+        });
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        textview=findViewById(R.id.text_view);
         listView = (ListView) findViewById(R.id.list_view);
 
         final SearchView sv=findViewById(R.id.searchView);
         // 设置该SearchView内默认显示的提示文本
         sv.setQueryHint("查找");
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                StockBean stockBean = stockBeanList.get(position);
+                intent=new Intent(MainActivity.this,TestScanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        Button searchbutton=(Button) findViewById(R.id.searchbutton);
+        searchbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sendRequestWithOkHttp(sv.getQuery().toString());
+            }
+        });
+
 
         //searchView监听事件
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -135,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
                 // 在这里进行UI操作，将结果显示到界面上
                 adapter=new StockBeanAdapter(MainActivity.this,R.layout.stockbean_item,stockBeanList);
                 listView.setAdapter(adapter);
-                textview.setText(response);
             }
         });
     }
