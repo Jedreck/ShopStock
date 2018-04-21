@@ -19,7 +19,6 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,24 +32,19 @@
             tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".BarCode.CaptureActivity"
-            tools:ignore="InnerclassSeparator">
-
-        </activity>
+            tools:ignore="InnerclassSeparator"></activity>
         <activity
             android:name=".BarCode.ResultActivity"
-            tools:ignore="InnerclassSeparator">
-
-        </activity>
+            tools:ignore="InnerclassSeparator"></activity>
         <activity
             android:name=".BarCode.TestScanActivity"
-            tools:ignore="InnerclassSeparator">
-
-        </activity>
+            tools:ignore="InnerclassSeparator"></activity>
     </application>
 
 </manifest>
