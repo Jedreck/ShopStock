@@ -52,7 +52,8 @@
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:icon="@drawable/app_icon"
-            >
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -65,16 +66,18 @@
             android:launchMode="singleTask"/>
         <activity
             android:name=".Store.Storeyes"
-            android:label="@string/title_activity_storeyes">
+            android:label="@string/title_activity_storeyes"
+            tools:ignore="InnerclassSeparator">
 
         </activity>
         <activity
             android:name=".Store.Storeno"
-            android:label="@string/title_activity_storeno">
-        </activity>
+            android:label="@string/title_activity_storeno"
+            tools:ignore="InnerclassSeparator" />
 
         <activity
-            android:name=".Store.StoreMain">
+            android:name=".Store.StoreMain"
+            tools:ignore="InnerclassSeparator">
 
         </activity>
     </application>

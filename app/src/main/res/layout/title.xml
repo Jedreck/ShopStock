@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="43dp"
+    android:layout_height="wrap_content"
     android:background="@color/colorPrimary">
-
-    <ImageButton
+    <ImageView
         android:id="@+id/scan"
-
         android:layout_width="53dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="53dp"
+        android:layout_gravity="center"
         android:adjustViewBounds="false"
-        android:src="@drawable/scan" />
+        android:background="@drawable/scan" />
     <EditText
         android:id="@+id/shuru"
-        android:layout_width="226dp"
-        android:layout_height="46dp" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ruku"
+        android:layout_toEndOf="@+id/scan"
+        android:layout_toStartOf="@+id/ruku"/>
 
     <Button
         android:id="@+id/ruku"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:background="@color/colorPrimary"
         android:text="入库" />
-</LinearLayout>
+</RelativeLayout>
