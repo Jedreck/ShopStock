@@ -16,6 +16,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -39,6 +41,7 @@
         <activity android:name=".Store.StoreMain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -51,14 +54,22 @@
         <activity
             android:name=".BarCodeActivity.TestScanActivity"
             tools:ignore="InnerclassSeparator" />
-        <activity android:name=".FullInfoActivity.FullInfoActivity"
+        <activity
+            android:name=".FullInfoActivity.FullInfoActivity"
             android:theme="@style/Theme.Design.NoActionBar"
             tools:ignore="InnerclassSeparator" />
-            <activity android:name=".Store.Storeyes"
-            android:label="@string/title_activity_storeyes">
-            </activity>
+        <activity
+            android:name=".Store.Storeyes"
+            android:label="@string/title_activity_storeyes"></activity>
+        <activity
+            android:name=".Store.Storeno"
+            android:label="@string/title_activity_storeno">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
     </application>
 
 </manifest>

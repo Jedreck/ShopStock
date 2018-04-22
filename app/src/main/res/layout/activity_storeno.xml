@@ -6,7 +6,7 @@
     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jedreck.shopstock.Store.Storeyes">
+    tools:context="com.example.jedreck.shopstock.Store.Storeno">
 
     <!--<TextView-->
         <!--android:id="@+id/message"-->
@@ -18,7 +18,7 @@
         <!--android:text="@string/title_home"-->
         <!--app:layout_constraintLeft_toLeftOf="parent"-->
         <!--app:layout_constraintTop_toTopOf="parent" />-->
-<include layout="@layout/horizontallayout"/>
+    <include layout="@layout/horizontallayout"/>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="0dp"

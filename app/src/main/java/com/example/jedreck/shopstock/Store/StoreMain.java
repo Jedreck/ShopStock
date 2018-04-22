@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jedreck.shopstock.Bean.StockBean;
 import com.example.jedreck.shopstock.R;
@@ -81,11 +82,13 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
     {
         if(v.getId()==R.id.ruku)
         {
-           // sendRequestWithOkHttp();
             input=editText.getText().toString();
+            if (isNumber(input)==false) {
+                Toast.makeText(StoreMain.this, "条形码号输入错误，请重新输入", Toast.LENGTH_SHORT).show();
+                showResponse("");
+            }
+            else
             sendRequestWithOkHttp();
-           // Intent intent=new Intent(StoreMain.this,Storeyes.class);
-           // startActivity(intent);
         }
     }
     private void sendRequestWithOkHttp(){
@@ -102,23 +105,47 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
                             .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
-                  String responseData = response.body().string();
-                    String r=StockBean.object2Objective(responseData).getId();
-                if(r=="000000")
+                    String responseData = response.body().string();
+                    StockBean stockBean=StockBean.josn2Objective(responseData);
+                    String r=stockBean.getId();
+                 if(r.equals("000000"))
                 {
-
-                }
-                if(r!="000000")
-                {
-                    Intent intent=new Intent(StoreMain.this,Storeyes.class);
+                    Intent intent=new Intent(StoreMain.this,Storeno.class);
+                    intent.putExtra("id",input);
                     startActivity(intent);
                 }
-//                    showResponse(r);
+                else
+                {
+                   Intent intent1=new Intent(StoreMain.this,Storeyes.class);
+                   String s1,s2,s3,s4;
+                       s1=stockBean.getId();
+                       intent1.putExtra("id",s1);
+                        s2=stockBean.getName();
+                       intent1.putExtra("name",s2);
+                        s3=stockBean.getPrice();
+                       intent1.putExtra("price",s3);
+                        s4=stockBean.getStock();
+                       intent1.putExtra("stock",s4);
+                    startActivity(intent1);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
+    private boolean isNumber(String s)
+    {
+        if(s.length()!=13)
+            return false;
+        for (int i=s.length();--i>=0;)
+        {
+            if(!Character.isDigit(s.charAt(i)))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 //    public void parseJsonWithGSON(String jsonData,final String response)
 //    {
@@ -135,19 +162,15 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
 //            }
 //        });
 //    }
-//    public void showResponse(final String response)
-//    {
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                editText.setText(response);
-////                for (StoreApp app :appList)
-////                {
-////                    editText.setText(app.getId());
-////                }
-//            }
-//        });
-//    }
+    public void showResponse(final String s)
+    {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                editText.setText(s);
+            }
+        });
+    }
     private void initCargo()
     {
         Cargo binggan=new Cargo("雀巢脆脆鲨威化奶香巧克力夹心饼干500g散装休闲食品零食包邮喜糖20.0/件",R.drawable.binggan);
