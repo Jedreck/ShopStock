@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/idlayout"/>
+    <include layout="@layout/namelayout"/>
+    <include layout="@layout/priceinlayout"/>
+    <include layout="@layout/pricelayout"/>
+    <include layout="@layout/stocklayout"/>
+    <include layout="@layout/numberlayout"/>
+    <include layout="@layout/buttonlayout"/>
+</LinearLayout>

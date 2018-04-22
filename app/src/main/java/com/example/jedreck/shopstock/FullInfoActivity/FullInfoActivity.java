@@ -11,12 +11,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jedreck.shopstock.Bean.CommodityInfoBean;
 import com.example.jedreck.shopstock.Bean.EnterBean;
 import com.example.jedreck.shopstock.Bean.OutBean;
 import com.example.jedreck.shopstock.Internet.RequestManager;
-import com.example.jedreck.shopstock.OUTPart.thingsadapter;
 import com.example.jedreck.shopstock.R;
 
 import java.io.IOException;
@@ -39,7 +39,7 @@ public class FullInfoActivity extends Activity {
     private CommodityInfoBean commodityInfoBean;
     private static final int MESSAGE_FLAG = 1;
 
-    @SuppressLint("HandlerLeak")
+    @SuppressLint("HandlerLeak")//接受线程返回的东西
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -75,12 +75,12 @@ public class FullInfoActivity extends Activity {
         name = findViewById(R.id.FullInfo_Name_Text);
         price = findViewById(R.id.FullInfo_Price_Text);
         stock = findViewById(R.id.FullInfo_Stock_Text);
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        Log.d("FullInfoActivity", "inStart: "+ID);
         //开始显示进度条
         loadingDialog.show();
         //获取信息
@@ -88,6 +88,7 @@ public class FullInfoActivity extends Activity {
     }
 
     private void startGetInfo() {
+        Log.d("FullInfoActivity", "startGetInfo: "+ID);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -113,6 +114,12 @@ public class FullInfoActivity extends Activity {
     private void showInfo(){
         //显示信息
         commodityInfoBean=CommodityInfoBean.json2Objective(responseData);
+        if(commodityInfoBean==null){
+            Toast.makeText(this,"搜索无此商品",Toast.LENGTH_SHORT).show();
+//            this.onDestroy();
+            finish();
+            return;
+        }
         id.setText(commodityInfoBean.getStock().getId());
         name.setText(commodityInfoBean.getStock().getName());
         price.setText(commodityInfoBean.getStock().getPrice());

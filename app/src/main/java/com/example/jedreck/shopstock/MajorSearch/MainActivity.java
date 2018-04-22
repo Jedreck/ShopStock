@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(MainActivity.this, CaptureActivity.class);
+                intent.putExtra("flag",CaptureActivity.TO_FULLINFO);
                 startActivity(intent);
             }
         });

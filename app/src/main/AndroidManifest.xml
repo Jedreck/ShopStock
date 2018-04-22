@@ -37,13 +37,11 @@
             tools:ignore="InnerclassSeparator"
             android:launchMode="singleTask">
         </activity>
-
         <activity
             android:name=".BarCodeActivity.ResultActivity"
             tools:ignore="InnerclassSeparator"
             android:launchMode="singleTask">
         </activity>
-
         <activity
             android:name=".BarCodeActivity.TestScanActivity"
             tools:ignore="InnerclassSeparator"
@@ -55,16 +53,26 @@
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".FullInfoActivity.FullInfoActivity"
+        <activity
+            android:name=".FullInfoActivity.FullInfoActivity"
             android:theme="@style/Theme.Design.NoActionBar"
             tools:ignore="InnerclassSeparator"
             android:launchMode="singleTask"/>
+        <activity
+            android:name=".Store.Storeyes"
+            android:label="@string/title_activity_storeyes"></activity>
+        <activity
+            android:name=".Store.Storeno"
+            android:label="@string/title_activity_storeno">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
     </application>
 
 </manifest>

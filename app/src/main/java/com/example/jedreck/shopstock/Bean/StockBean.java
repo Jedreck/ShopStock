@@ -19,7 +19,7 @@ public class StockBean {
     private String price;
     private String stock;
 
-    public static StockBean object2Objective(String str) {
+    public static StockBean josn2Objective(String str) {
         return new com.google.gson.Gson().fromJson(str, StockBean.class);
     }
 
