@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".FullInfoActivity.FullInfoActivity"
-    android:background="#f792a8">
+    android:background="#b9b7b8">
 
     <RelativeLayout
         android:id="@+id/StockInfo_Layout"
@@ -22,7 +22,7 @@
             android:cropToPadding="true"
             android:elevation="0dp"
             android:src="@drawable/back"
-            android:background="#f792a8"
+            android:background="#b9b7b8"
             android:layout_alignParentTop="true"/>
 
         <LinearLayout
