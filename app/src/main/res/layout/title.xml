@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary">
-    <ImageView
+    <ImageButton
         android:id="@+id/scan"
         android:layout_width="53dp"
         android:layout_height="53dp"

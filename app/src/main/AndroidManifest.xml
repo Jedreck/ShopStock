@@ -8,7 +8,9 @@
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
-        android:xlargeScreens="true" />
+        android:xlargeScreens="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"/>
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
@@ -67,16 +69,20 @@
         <activity
             android:name=".Store.Storeyes"
             android:label="@string/title_activity_storeyes"
+            android:launchMode="singleTask"
             tools:ignore="InnerclassSeparator">
 
         </activity>
         <activity
             android:name=".Store.Storeno"
             android:label="@string/title_activity_storeno"
+            android:launchMode="singleTask"
             tools:ignore="InnerclassSeparator" />
 
         <activity
             android:name=".Store.StoreMain"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             tools:ignore="InnerclassSeparator">
 
         </activity>
