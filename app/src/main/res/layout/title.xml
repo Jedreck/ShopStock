@@ -14,9 +14,9 @@
         android:id="@+id/shuru"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ruku"
-        android:layout_toEndOf="@+id/scan"
-        android:layout_toStartOf="@+id/ruku"/>
+        android:layout_alignBottom="@id/ruku"
+        android:layout_toEndOf="@id/scan"
+        android:layout_toStartOf="@id/ruku"/>
 
     <Button
         android:id="@+id/ruku"
