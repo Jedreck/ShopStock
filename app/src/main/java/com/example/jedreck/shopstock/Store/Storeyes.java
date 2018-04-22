@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jedreck.shopstock.Internet.RequestManager;
+import com.example.jedreck.shopstock.MajorSearch.MainActivity;
+import com.example.jedreck.shopstock.OUTPart.OutActivity;
 import com.example.jedreck.shopstock.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -50,6 +52,7 @@ public class Storeyes extends AppCompatActivity implements View.OnClickListener 
     private Button button2;
     String s1, s2, s3, s4, s5, s6;
     String re;
+    Intent intent;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -57,13 +60,15 @@ public class Storeyes extends AppCompatActivity implements View.OnClickListener 
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_shop:
-                    mTextMessage.setText(R.string.title_home);
+                    intent=new Intent(Storeyes.this, MainActivity.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_in:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
+                    intent=new Intent(Storeyes.this, StoreMain.class);
+                    startActivity(intent);
                 case R.id.navigation_out:
-                    mTextMessage.setText(R.string.title_notifications);
+                    intent=new Intent(Storeyes.this, OutActivity.class);
+                    startActivity(intent);
                     return true;
             }
             return false;

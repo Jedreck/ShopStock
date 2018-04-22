@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jedreck.shopstock.Bean.StockBean;
+import com.example.jedreck.shopstock.MajorSearch.MainActivity;
+import com.example.jedreck.shopstock.OUTPart.OutActivity;
 import com.example.jedreck.shopstock.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -35,6 +37,7 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
     private List<Cargo> cargoList=new ArrayList<>();
     private EditText editText;
     String input;
+    Intent intent;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -42,14 +45,14 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_shop:
-//                    mTextMessage.setText(R.string.title_home);
+                    intent=new Intent(StoreMain.this, MainActivity.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_in:
-//                    mTextMessage.setText(R.string.title_dashboard);
-//                    mTextMessage.setText(R.string.title_in);
                     return true;
                 case R.id.navigation_out:
-//                    mTextMessage.setText(R.string.title_notifications);
+                    intent=new Intent(StoreMain.this, OutActivity.class);
+                    startActivity(intent);
                     return true;
             }
             return false;

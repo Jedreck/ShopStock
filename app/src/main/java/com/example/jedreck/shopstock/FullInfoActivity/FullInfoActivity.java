@@ -20,6 +20,7 @@ import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.R;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -61,6 +62,10 @@ public class FullInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_info);
+        List<EnterBean> enterBeans=new ArrayList<>();
+        List<OutBean> outBeans=new ArrayList<>();
+        showOutInfo(outBeans);
+        showEnterInfo(enterBeans);
         //获取相关必要资源
         loadingDialog = new LoadingDialog(FullInfoActivity.this);
         loadingDialog.show();
@@ -70,7 +75,6 @@ public class FullInfoActivity extends Activity {
         name = findViewById(R.id.FullInfo_Name_Text);
         price = findViewById(R.id.FullInfo_Price_Text);
         stock = findViewById(R.id.FullInfo_Stock_Text);
-        Log.d("FullInfoActivity", "onCreate: "+ID);
     }
 
     @Override
