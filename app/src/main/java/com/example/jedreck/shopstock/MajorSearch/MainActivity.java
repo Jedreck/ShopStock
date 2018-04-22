@@ -10,17 +10,18 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
 import com.example.jedreck.shopstock.BarCodeActivity.TestScanActivity;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     Intent intent;
     SearchView sv;
+    LinearLayout l;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_shop:
+                    //mTextMessage.setText(R.string.title_shop);
                     return true;
                 case R.id.navigation_in:
                     intent = new Intent(MainActivity.this, StoreMain.class);
@@ -132,9 +135,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "onQueryTextChange = " + queryText);
                 String selection = ContactsContract.RawContacts.DISPLAY_NAME_PRIMARY + " LIKE '%" + queryText + "%' " + " OR "
                         + ContactsContract.RawContacts.SORT_KEY_PRIMARY + " LIKE '%" + queryText + "%' ";
-
-               /*String[] selectionArg = { queryText };
-                mCursor = getContentResolver().query(RawContacts.CONTENT_URI, PROJECTION, selection, null, null);
+                // String[] selectionArg = { queryText };
+                /*mCursor = getContentResolver().query(RawContacts.CONTENT_URI, PROJECTION, selection, null, null);
                 mAdapter.swapCursor(mCursor); // 交换指针，展示新的数据*/
                 return true;
             }
@@ -200,8 +202,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // 在这里进行UI操作，将结果显示到界面上
-                adapter=new StockBeanAdapter(MainActivity.this,R.layout.stockbean_item,stockBeanList);
-                listView.setAdapter(adapter);
+                if(stockBeanList.size()!=0){
+                    //上次将listview清空后，需要将textview提示框清空并重新添加listview
+                    /*if(listView==null)
+                    l.addView(listView);*/
+                    adapter=new StockBeanAdapter(MainActivity.this,R.layout.stockbean_item,stockBeanList);
+                    listView.setAdapter(adapter);
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"尚无此类商品",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
