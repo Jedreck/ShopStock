@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:columnCount="2"
-    android:orientation="horizontal"
-    android:background="#b1868585">
+    android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/EnterOrOutImage"
@@ -43,7 +42,7 @@
                 android:text="价格：" />
 
             <TextView
-                android:id="@+id/DealNum"
+                android:id="@+id/DealPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -59,7 +58,7 @@
                 android:text="数量：" />
 
             <TextView
-                android:id="@+id/DealPrice"
+                android:id="@+id/DealNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

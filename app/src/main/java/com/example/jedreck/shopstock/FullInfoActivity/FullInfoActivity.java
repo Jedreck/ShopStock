@@ -10,6 +10,9 @@ import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +38,7 @@ public class FullInfoActivity extends Activity {
     private TextView name;
     private TextView price;
     private TextView stock;
+    private ImageButton Back;
     private String responseData = "{}";
     private CommodityInfoBean commodityInfoBean;
     private static final int MESSAGE_FLAG = 1;
@@ -75,12 +79,30 @@ public class FullInfoActivity extends Activity {
         name = findViewById(R.id.FullInfo_Name_Text);
         price = findViewById(R.id.FullInfo_Price_Text);
         stock = findViewById(R.id.FullInfo_Stock_Text);
+        Back = findViewById(R.id.FullInfo_Back_Button);
+        Back.setOnClickListener(new ButtonListener());
+        Log.d("FullInfoActivity", "onCreate: " + ID);
     }
 
+
+    private  class ButtonListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View v) {
+            int tag = v.getId();
+            switch (tag){
+                case R.id.FullInfo_Back_Button:
+                    finish();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("FullInfoActivity", "inStart: "+ID);
+        Log.d("FullInfoActivity", "inStart: " + ID);
         //开始显示进度条
         loadingDialog.show();
         //获取信息
@@ -88,7 +110,7 @@ public class FullInfoActivity extends Activity {
     }
 
     private void startGetInfo() {
-        Log.d("FullInfoActivity", "startGetInfo: "+ID);
+        Log.d("FullInfoActivity", "startGetInfo: " + ID);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -101,7 +123,7 @@ public class FullInfoActivity extends Activity {
                     Message message = new Message();
                     message.what = MESSAGE_FLAG;
                     Bundle bundle = new Bundle();
-                    bundle.putString("responseData",responseData);
+                    bundle.putString("responseData", responseData);
                     Log.d("responseData", "run2: " + responseData);
                     handler.sendMessage(message);
                 } catch (IOException e) {
@@ -111,11 +133,11 @@ public class FullInfoActivity extends Activity {
         }).start();
     }
 
-    private void showInfo(){
+    private void showInfo() {
         //显示信息
-        commodityInfoBean=CommodityInfoBean.json2Objective(responseData);
-        if(commodityInfoBean==null){
-            Toast.makeText(this,"搜索无此商品",Toast.LENGTH_SHORT).show();
+        commodityInfoBean = CommodityInfoBean.json2Objective(responseData);
+        if (commodityInfoBean == null) {
+            Toast.makeText(this, "搜索无此商品", Toast.LENGTH_SHORT).show();
 //            this.onDestroy();
             finish();
             return;
