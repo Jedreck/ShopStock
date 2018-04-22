@@ -6,17 +6,21 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
 import com.example.jedreck.shopstock.BarCodeActivity.TestScanActivity;
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     StockBeanAdapter adapter;
     ListView listView;
     Intent intent;
+    LinearLayout l;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -67,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        l=findViewById(R.id.layout);
 
         ImageView imageView=(ImageView) findViewById(R.id.imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -171,8 +178,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // 在这里进行UI操作，将结果显示到界面上
-                adapter=new StockBeanAdapter(MainActivity.this,R.layout.stockbean_item,stockBeanList);
-                listView.setAdapter(adapter);
+                if(stockBeanList.size()!=0){
+                    //上次将listview清空后，需要将textview提示框清空并重新添加listview
+                    /*if(listView==null)
+                    l.addView(listView);*/
+                    adapter=new StockBeanAdapter(MainActivity.this,R.layout.stockbean_item,stockBeanList);
+                    listView.setAdapter(adapter);
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"尚无此类商品",Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

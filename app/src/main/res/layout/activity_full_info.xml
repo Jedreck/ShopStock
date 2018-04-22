@@ -5,16 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FullInfoActivity.FullInfoActivity">
+    tools:context=".FullInfoActivity.FullInfoActivity"
+    android:background="#f792a8">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/StockInfo_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <ImageButton
+            android:id="@+id/FullInfo_Back_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:elevation="0dp"
+            android:src="@drawable/back"
+            android:background="#f792a8"
+            android:layout_alignParentTop="true"/>
+
         <LinearLayout
             android:id="@+id/ShowID_Layout"
+            android:layout_toRightOf="@+id/FullInfo_Back_Button"
+            android:layout_below="@+id/FullInfo_Back_Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -22,7 +36,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/BarCode_Text" />
+                android:text="@string/BarCode_Text"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/FullInfo_ID_Text"
@@ -33,6 +48,8 @@
 
         <LinearLayout
             android:id="@+id/ShowName_layout"
+            android:layout_toRightOf="@+id/FullInfo_Back_Button"
+            android:layout_below="@+id/ShowID_Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -40,7 +57,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Name_Text" />
+                android:text="@string/Name_Text"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/FullInfo_Name_Text"
@@ -50,6 +68,8 @@
 
         <LinearLayout
             android:id="@+id/ShowPrice_Layout"
+            android:layout_toRightOf="@+id/FullInfo_Back_Button"
+            android:layout_below="@+id/ShowName_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -57,7 +77,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Price_Text" />
+                android:text="@string/Price_Text"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/FullInfo_Price_Text"
@@ -67,6 +88,8 @@
 
         <LinearLayout
             android:id="@+id/ShowStock_Layout"
+            android:layout_toRightOf="@+id/FullInfo_Back_Button"
+            android:layout_below="@+id/ShowPrice_Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -74,14 +97,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Stock_Text" />
+                android:text="@string/Stock_Text"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/FullInfo_Stock_Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,9 +114,12 @@
             android:layout_weight="1">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="入库信息" />
+                android:text="入库信息"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/ShowEntry_List"
@@ -105,10 +132,14 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="出库信息" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="出库信息"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/ShowOut_List"
