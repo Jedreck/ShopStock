@@ -10,10 +10,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
 import com.example.jedreck.shopstock.Bean.StockBean;
 import com.example.jedreck.shopstock.MajorSearch.MainActivity;
 import com.example.jedreck.shopstock.OUTPart.OutActivity;
@@ -38,6 +40,7 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
     private EditText editText;
     String input;
     Intent intent;
+    ImageButton button1;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -65,6 +68,7 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_main);
         ActionBar actionBar=getSupportActionBar();
+        button1=findViewById(R.id.scan);
         if (actionBar!=null)
         {
             actionBar.hide();
@@ -79,6 +83,7 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
         Button button=(Button) findViewById(R.id.ruku);
         editText=(EditText) findViewById(R.id.shuru);
         button.setOnClickListener(this);
+        button1.setOnClickListener(this);
     }
     @Override
     public void onClick(View v)
@@ -92,6 +97,12 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
             }
             else
             sendRequestWithOkHttp();
+        }
+        if(v.getId()==R.id.scan)
+        {
+            intent = new Intent(StoreMain.this, CaptureActivity.class);
+            intent.putExtra("flag",CaptureActivity.TO_SEARCHLITE);
+            startActivity(intent);
         }
     }
     private void sendRequestWithOkHttp(){

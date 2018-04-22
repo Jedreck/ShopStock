@@ -30,13 +30,23 @@ import com.example.jedreck.shopstock.BarCodeActivity.decode.DecodeThread;
 import com.example.jedreck.shopstock.BarCodeActivity.utils.BeepManager;
 import com.example.jedreck.shopstock.BarCodeActivity.utils.CaptureActivityHandler;
 import com.example.jedreck.shopstock.BarCodeActivity.utils.InactivityTimer;
+import com.example.jedreck.shopstock.Bean.StockBean;
 import com.example.jedreck.shopstock.FullInfoActivity.FullInfoActivity;
 import com.example.jedreck.shopstock.R;
+import com.example.jedreck.shopstock.Store.StoreMain;
+import com.example.jedreck.shopstock.Store.Storeno;
+import com.example.jedreck.shopstock.Store.Storeyes;
 import com.google.zxing.Result;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class CaptureActivity extends Activity implements SurfaceHolder.Callback {
     private static final String TAG = CaptureActivity.class.getSimpleName();
-
+    private String input;
     private int Flag;
     public static final int TO_FULLINFO = 1;
     public static final int TO_SEARCHLITE = 2;
@@ -183,14 +193,54 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
                 startActivity(new Intent(CaptureActivity.this, FullInfoActivity.class).putExtras(bundle));
                 break;
             case TO_SEARCHLITE:
-                Intent intent = new Intent();
-                intent.putExtra("id",rawResult.getText());
-                startActivity(intent);
-                break;
+                input=rawResult.getText();
+                sendRequestWithOkHttp();
         }
         finish();
     }
-
+    private void sendRequestWithOkHttp(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    OkHttpClient client= new OkHttpClient();
+                    RequestBody requestBody = new FormBody.Builder()
+                            .add("id",input)
+                            .build();
+                    Request request = new Request.Builder()
+                            .url("http://pvrfix.natappfree.cc/storage/SearchIDLite_Servlet")
+                            .post(requestBody)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    StockBean stockBean=StockBean.josn2Objective(responseData);
+                    String r=stockBean.getId();
+                    if(r.equals("000000"))
+                    {
+                        Intent intent=new Intent(CaptureActivity.this,Storeno.class);
+                        intent.putExtra("id",input);
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        Intent intent1=new Intent(CaptureActivity.this,Storeyes.class);
+                        String s1,s2,s3,s4;
+                        s1=stockBean.getId();
+                        intent1.putExtra("id",s1);
+                        s2=stockBean.getName();
+                        intent1.putExtra("name",s2);
+                        s3=stockBean.getPrice();
+                        intent1.putExtra("price",s3);
+                        s4=stockBean.getStock();
+                        intent1.putExtra("stock",s4);
+                        startActivity(intent1);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
     private void initCamera(SurfaceHolder surfaceHolder) {
         /*相机权限*/
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
