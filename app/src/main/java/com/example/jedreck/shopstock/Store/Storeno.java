@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.request.Request;
 import com.example.jedreck.shopstock.Internet.RequestManager;
+import com.example.jedreck.shopstock.MajorSearch.MainActivity;
+import com.example.jedreck.shopstock.OUTPart.OutActivity;
 import com.example.jedreck.shopstock.R;
 
 import okhttp3.FormBody;
@@ -44,20 +46,23 @@ public class Storeno extends AppCompatActivity implements View.OnClickListener{
     private Button button2;
     String s1,s2,s3,s4,s5,s6;
     String re;
+    Intent intent;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_in:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_out:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
                 case R.id.navigation_shop:
-                    mTextMessage.setText(R.string.title_notifications);
+                    intent=new Intent(Storeno.this, MainActivity.class);
+                    startActivity(intent);
+                    return true;
+                case R.id.navigation_in:
+                    intent=new Intent(Storeno.this, StoreMain.class);
+                    startActivity(intent);
+                case R.id.navigation_out:
+                    intent=new Intent(Storeno.this, OutActivity.class);
+                    startActivity(intent);
                     return true;
             }
             return false;

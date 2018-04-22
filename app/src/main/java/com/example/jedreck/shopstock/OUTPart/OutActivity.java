@@ -13,6 +13,7 @@ import com.example.jedreck.shopstock.Bean.OutBean;
 import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.MajorSearch.MainActivity;
 import com.example.jedreck.shopstock.R;
+import com.example.jedreck.shopstock.Store.StoreMain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +39,10 @@ public class OutActivity extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 case R.id.navigation_in:
-
+                    intent = new Intent(OutActivity.this,StoreMain.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_out:
-
                     return true;
             }
             return false;
