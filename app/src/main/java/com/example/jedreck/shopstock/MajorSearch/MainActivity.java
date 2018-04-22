@@ -1,13 +1,16 @@
 package com.example.jedreck.shopstock.MajorSearch;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     StockBeanAdapter adapter;
     ListView listView;
     Intent intent;
+    SearchView sv;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -68,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ActionBar actionbar=getSupportActionBar();
+        if(actionbar!=null){
+            actionbar.hide();
+        }
+
         ImageView imageView=(ImageView) findViewById(R.id.imageView);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         listView = (ListView) findViewById(R.id.list_view);
 
-        final SearchView sv=findViewById(R.id.searchView);
+        sv=findViewById(R.id.searchView);
         // 设置该SearchView内默认显示的提示文本
         sv.setQueryHint("查找");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -99,7 +109,15 @@ public class MainActivity extends AppCompatActivity {
         searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (sv != null) {
+                    // 得到输入管理对象
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        // 这将让键盘在所有的情况下都被隐藏，但是一般我们在点击搜索按钮后，输入法都会乖乖的自动隐藏的。
+                        imm.hideSoftInputFromWindow(sv.getWindowToken(), 0); // 输入法如果是显示状态，那么就隐藏输入法
+                    }
+                    sv.clearFocus(); // 不获取焦点
+                }
                 sendRequestWithOkHttp(sv.getQuery().toString());
             }
         });
@@ -113,8 +131,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "onQueryTextChange = " + queryText);
                 String selection = ContactsContract.RawContacts.DISPLAY_NAME_PRIMARY + " LIKE '%" + queryText + "%' " + " OR "
                         + ContactsContract.RawContacts.SORT_KEY_PRIMARY + " LIKE '%" + queryText + "%' ";
-                // String[] selectionArg = { queryText };
-                /*mCursor = getContentResolver().query(RawContacts.CONTENT_URI, PROJECTION, selection, null, null);
+
+               /*String[] selectionArg = { queryText };
+                mCursor = getContentResolver().query(RawContacts.CONTENT_URI, PROJECTION, selection, null, null);
                 mAdapter.swapCursor(mCursor); // 交换指针，展示新的数据*/
                 return true;
             }
@@ -131,6 +150,16 @@ public class MainActivity extends AppCompatActivity {
                         imm.hideSoftInputFromWindow(sv.getWindowToken(), 0); // 输入法如果是显示状态，那么就隐藏输入法
                     }
                     sv.clearFocus(); // 不获取焦点
+                }
+                return true;
+            }
+        });
+        sv.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                if (stockBeanList != null) {
+                    stockBeanList.clear();
+                    showResponse();
                 }
                 return true;
             }
@@ -155,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("MainActivity","response:"+responseData);
                     stockBeanList.clear();
                     stockBeanList=StockBean.json2Objectives(responseData);
-                    showResponse(responseData);
+                    showResponse();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -164,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private  void showResponse(final String response)
+    private  void showResponse()
     {
         runOnUiThread(new Runnable() {
             @Override

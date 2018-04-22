@@ -5,16 +5,19 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jedreck.shopstock.MajorSearch.MainActivity">
+    tools:context="com.example.jedreck.shopstock.MajorSearch.MainActivity"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -44,7 +47,9 @@
         <ListView
             android:id="@+id/list_view"
             android:layout_width="match_parent"
-            android:layout_height="400dp">
+            android:layout_height="match_parent"
+            android:divider="#00000000"
+            android:dividerHeight="4dp">
 
         </ListView>
 
@@ -60,6 +65,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation" />
+        app:menu="@menu/navigation"
+        app:itemIconTint="@color/coloritem"
+        app:itemTextColor="@color/coloritem"/>
 
 </android.support.constraint.ConstraintLayout>

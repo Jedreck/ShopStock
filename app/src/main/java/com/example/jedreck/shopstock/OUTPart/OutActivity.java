@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -59,6 +60,8 @@ public class OutActivity extends AppCompatActivity {
         recyclerView=(RecyclerView) findViewById(R.id.recycler_view);
         layoutManager=new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(layoutManager);
+        adapter=new thingsadapter(thingsList);
+        recyclerView.setAdapter(adapter);
         sendRequestWithOkHttp();
     }
 
