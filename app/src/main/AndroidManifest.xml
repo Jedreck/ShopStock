@@ -37,8 +37,6 @@
             tools:ignore="InnerclassSeparator"
             android:launchMode="singleTask">
         </activity>
-            android:name=".BarCodeActivity.CaptureActivity"
-            tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".BarCodeActivity.ResultActivity"
             tools:ignore="InnerclassSeparator"
@@ -53,8 +51,6 @@
             android:name=".MajorSearch.MainActivity"
             android:label="@string/title_activity_main"
             android:launchMode="singleTask">
-            android:label="@string/title_activity_main"
-            tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -65,7 +61,6 @@
             android:theme="@style/Theme.Design.NoActionBar"
             tools:ignore="InnerclassSeparator"
             android:launchMode="singleTask"/>
-            tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".Store.Storeyes"
             android:label="@string/title_activity_storeyes"></activity>
