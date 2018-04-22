@@ -16,8 +16,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -31,32 +29,42 @@
         <activity
             android:name=".OUTPart.OutActivity"
             android:label="@string/title_activity_out"
-            tools:ignore="InnerclassSeparator">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".Store.StoreMain">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask">
         </activity>
         <activity
+            android:name=".BarCodeActivity.CaptureActivity"
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask">
+        </activity>
             android:name=".BarCodeActivity.CaptureActivity"
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".BarCodeActivity.ResultActivity"
-            tools:ignore="InnerclassSeparator" />
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask">
+        </activity>
         <activity
             android:name=".BarCodeActivity.TestScanActivity"
-            tools:ignore="InnerclassSeparator" />
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".MajorSearch.MainActivity"
+            android:label="@string/title_activity_main"
+            android:launchMode="singleTask">
+            android:label="@string/title_activity_main"
+            tools:ignore="InnerclassSeparator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".FullInfoActivity.FullInfoActivity"
             android:theme="@style/Theme.Design.NoActionBar"
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask"/>
             tools:ignore="InnerclassSeparator" />
         <activity
             android:name=".Store.Storeyes"

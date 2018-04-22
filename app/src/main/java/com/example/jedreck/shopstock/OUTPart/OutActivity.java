@@ -4,16 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import com.example.jedreck.shopstock.BarCodeActivity.TestScanActivity;
 import com.example.jedreck.shopstock.Bean.OutBean;
 import com.example.jedreck.shopstock.Internet.RequestManager;
+import com.example.jedreck.shopstock.MajorSearch.MainActivity;
 import com.example.jedreck.shopstock.R;
 
 import java.util.ArrayList;
@@ -25,13 +22,9 @@ import okhttp3.Response;
 
 public class OutActivity extends AppCompatActivity {
 
-    //private TextView mTextMessage;
-    //private DrawerLayout mDrawerLayout;
     private thingsadapter adapter;
-
-
+    Intent intent;
     private List<OutBean> thingsList=new ArrayList<>();
-    private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -40,15 +33,14 @@ public class OutActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_shop:
-                    //mTextMessage.setText(R.string.title_shop);
-                    return true;
-                case R.id.navigation_in:
-                    //mTextMessage.setText(R.string.title_in);
-                    Intent intent = new Intent(OutActivity.this, TestScanActivity.class);
+                    intent = new Intent(OutActivity.this, MainActivity.class);
                     startActivity(intent);
                     return true;
+                case R.id.navigation_in:
+
+                    return true;
                 case R.id.navigation_out:
-                    mTextMessage.setText(R.string.title_out);
+
                     return true;
             }
             return false;
@@ -61,7 +53,6 @@ public class OutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_out);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 

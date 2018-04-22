@@ -30,11 +30,16 @@ import com.example.jedreck.shopstock.BarCodeActivity.decode.DecodeThread;
 import com.example.jedreck.shopstock.BarCodeActivity.utils.BeepManager;
 import com.example.jedreck.shopstock.BarCodeActivity.utils.CaptureActivityHandler;
 import com.example.jedreck.shopstock.BarCodeActivity.utils.InactivityTimer;
+import com.example.jedreck.shopstock.FullInfoActivity.FullInfoActivity;
 import com.example.jedreck.shopstock.R;
 import com.google.zxing.Result;
 
 public class CaptureActivity extends Activity implements SurfaceHolder.Callback {
     private static final String TAG = CaptureActivity.class.getSimpleName();
+
+    private int Flag;
+    public static final int TO_FULLINFO = 1;
+    public static final int TO_SEARCHLITE = 2;
 
     private CameraManager cameraManager;
     private CaptureActivityHandler handler;
@@ -83,7 +88,8 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
         animation.setRepeatCount(-1);
         animation.setRepeatMode(Animation.RESTART);
         scanLine.startAnimation(animation);
-
+        Intent intent = getIntent();
+        this.Flag = intent.getIntExtra("flag", 0);
     }
 
     @Override
@@ -170,9 +176,19 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
 
         bundle.putInt("width", mCropRect.width());
         bundle.putInt("height", mCropRect.height());
-        bundle.putString("result", rawResult.getText());
+        bundle.putString("id", rawResult.getText());
         Log.d(TAG, "handleDecode: result---" + rawResult.getText());
-        startActivity(new Intent(CaptureActivity.this, ResultActivity.class).putExtras(bundle));
+        switch (Flag) {
+            case TO_FULLINFO:
+                startActivity(new Intent(CaptureActivity.this, FullInfoActivity.class).putExtras(bundle));
+                break;
+            case TO_SEARCHLITE:
+                Intent intent = new Intent();
+                intent.putExtra("id",rawResult.getText());
+                startActivity(intent);
+                break;
+        }
+        finish();
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {
