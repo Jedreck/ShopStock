@@ -6,8 +6,10 @@
 
     <ImageButton
         android:id="@+id/scan"
-        android:layout_width="wrap_content"
+
+        android:layout_width="53dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:adjustViewBounds="false"
         android:src="@drawable/scan" />
     <EditText
