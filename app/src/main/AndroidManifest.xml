@@ -9,8 +9,7 @@
         android:normalScreens="true"
         android:smallScreens="true"
         android:xlargeScreens="true"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"/>
+        />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
@@ -27,7 +26,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true">
         <activity
             android:name=".OUTPart.OutActivity"
             android:label="@string/title_activity_out"
