@@ -17,4 +17,11 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_storeno">Storeno</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_start">StartActivity</string>
+    <string name="a_name">超市发展</string>
+    <string name="b_name">员工守则</string>
+    <string name="c_name">业绩</string>
+    <string name="d_name">商品情况</string>
+    <string name="e_name">名言警句</string>
+    <string name="Wait_in">亟待补货</string>
 </resources>

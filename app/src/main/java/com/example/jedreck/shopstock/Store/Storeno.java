@@ -20,6 +20,7 @@ import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.MajorSearch.MainActivity;
 import com.example.jedreck.shopstock.OUTPart.OutActivity;
 import com.example.jedreck.shopstock.R;
+import com.example.jedreck.shopstock.Start.StartActivity;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -54,7 +55,7 @@ public class Storeno extends AppCompatActivity implements View.OnClickListener{
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_shop:
-                    intent=new Intent(Storeno.this, MainActivity.class);
+                    intent=new Intent(Storeno.this,StartActivity.class);
                     startActivity(intent);
                     return true;
                 case R.id.navigation_in:

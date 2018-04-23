@@ -30,6 +30,7 @@ import com.example.jedreck.shopstock.FullInfoActivity.FullInfoActivity;
 import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.OUTPart.OutActivity;
 import com.example.jedreck.shopstock.R;
+import com.example.jedreck.shopstock.Start.StartActivity;
 import com.example.jedreck.shopstock.Store.StoreMain;
 
 import java.util.ArrayList;
@@ -57,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_shop:
-                    //mTextMessage.setText(R.string.title_shop);
+                    intent = new Intent(MainActivity.this, StartActivity.class);
+                    startActivity(intent);
                     return true;
                 case R.id.navigation_in:
                     intent = new Intent(MainActivity.this, StoreMain.class);

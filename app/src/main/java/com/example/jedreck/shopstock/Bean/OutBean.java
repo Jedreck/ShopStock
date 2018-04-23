@@ -18,6 +18,13 @@ public class OutBean {
     private String num;
     private String price_out;
     private String name;
+    public OutBean(String id,String time,String num,String price_out,String name){
+        this.id=id;
+        this.time=time;
+        this.price_out=price_out;
+        this.num=num;
+        this.name=name;
+    }
 
 
     public static OutBean json2Objective(String str) {

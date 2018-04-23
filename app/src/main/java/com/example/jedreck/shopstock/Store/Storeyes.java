@@ -21,6 +21,7 @@ import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.MajorSearch.MainActivity;
 import com.example.jedreck.shopstock.OUTPart.OutActivity;
 import com.example.jedreck.shopstock.R;
+import com.example.jedreck.shopstock.Start.StartActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -60,7 +61,7 @@ public class Storeyes extends AppCompatActivity implements View.OnClickListener 
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_shop:
-                    intent=new Intent(Storeyes.this, MainActivity.class);
+                    intent=new Intent(Storeyes.this, StartActivity.class);
                     startActivity(intent);
                     return true;
                 case R.id.navigation_in:
