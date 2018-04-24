@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jedreck.shopstock.Start.StartActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:layout_column="0">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="43dp"
+                android:layout_height="43dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:adjustViewBounds="false"
+                android:background="@drawable/scan" />
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                android:layout_toEndOf="@+id/imageView"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_toStartOf="@+id/searchbutton">
+            </SearchView>
+
+            <Button
+                android:id="@+id/searchbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="搜索" />
+
+        </RelativeLayout>
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/looper_bottom_bg">
+
+                <com.hejunlin.superindicatorlibray.CircleIndicator
+                    android:id="@id/indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="7dp"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+
+            </FrameLayout>
+
+            <com.hejunlin.superindicatorlibray.LoopViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginTop="12.5dp" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_height="20dp"
+                android:layout_width="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="@string/Wait_in"
+                android:textSize="15sp"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_height="20dp"
+                android:layout_width="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+            <ImageView
+                android:layout_height="20dp"
+                android:layout_width="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_column="0"/>
+
+    </GridLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation"
+        app:itemIconTint="@color/coloritem"
+        app:itemTextColor="@color/coloritem"/>
+
+</android.support.constraint.ConstraintLayout>
