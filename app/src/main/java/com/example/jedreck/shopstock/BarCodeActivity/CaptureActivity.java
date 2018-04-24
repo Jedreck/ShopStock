@@ -188,24 +188,30 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
         bundle.putInt("height", mCropRect.height());
         bundle.putString("id", rawResult.getText());
         Log.d(TAG, "handleDecode: result---" + rawResult.getText());
-        switch (Flag) {
-            case TO_FULLINFO:
-                startActivity(new Intent(CaptureActivity.this, FullInfoActivity.class).putExtras(bundle));
-                break;
-            case TO_SEARCHLITE:
-                input=rawResult.getText();
-                sendRequestWithOkHttp();
+        if (rawResult.getText().length() != 13) {
+            Toast.makeText(this, "请扫描商品条码", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            switch (Flag) {
+                case TO_FULLINFO:
+                    startActivity(new Intent(CaptureActivity.this, FullInfoActivity.class).putExtras(bundle));
+                    break;
+                case TO_SEARCHLITE:
+                    input = rawResult.getText();
+                    sendRequestWithOkHttp();
+            }
         }
         finish();
     }
-    private void sendRequestWithOkHttp(){
+
+    private void sendRequestWithOkHttp() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try{
-                    OkHttpClient client= new OkHttpClient();
+                try {
+                    OkHttpClient client = new OkHttpClient();
                     RequestBody requestBody = new FormBody.Builder()
-                            .add("id",input)
+                            .add("id", input)
                             .build();
                     Request request = new Request.Builder()
                             .url("http://pvrfix.natappfree.cc/storage/SearchIDLite_Servlet")
@@ -213,26 +219,23 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
-                    StockBean stockBean=StockBean.josn2Objective(responseData);
-                    String r=stockBean.getId();
-                    if(r.equals("000000"))
-                    {
-                        Intent intent=new Intent(CaptureActivity.this,Storeno.class);
-                        intent.putExtra("id",input);
+                    StockBean stockBean = StockBean.josn2Objective(responseData);
+                    String r = stockBean.getId();
+                    if (r.equals("000000")) {
+                        Intent intent = new Intent(CaptureActivity.this, Storeno.class);
+                        intent.putExtra("id", input);
                         startActivity(intent);
-                    }
-                    else
-                    {
-                        Intent intent1=new Intent(CaptureActivity.this,Storeyes.class);
-                        String s1,s2,s3,s4;
-                        s1=stockBean.getId();
-                        intent1.putExtra("id",s1);
-                        s2=stockBean.getName();
-                        intent1.putExtra("name",s2);
-                        s3=stockBean.getPrice();
-                        intent1.putExtra("price",s3);
-                        s4=stockBean.getStock();
-                        intent1.putExtra("stock",s4);
+                    } else {
+                        Intent intent1 = new Intent(CaptureActivity.this, Storeyes.class);
+                        String s1, s2, s3, s4;
+                        s1 = stockBean.getId();
+                        intent1.putExtra("id", s1);
+                        s2 = stockBean.getName();
+                        intent1.putExtra("name", s2);
+                        s3 = stockBean.getPrice();
+                        intent1.putExtra("price", s3);
+                        s4 = stockBean.getStock();
+                        intent1.putExtra("stock", s4);
                         startActivity(intent1);
                     }
                 } catch (IOException e) {
@@ -241,6 +244,7 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
             }
         }).start();
     }
+
     private void initCamera(SurfaceHolder surfaceHolder) {
         /*相机权限*/
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
