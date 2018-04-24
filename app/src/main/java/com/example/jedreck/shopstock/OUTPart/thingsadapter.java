@@ -52,7 +52,6 @@ public class thingsadapter extends RecyclerView.Adapter<thingsadapter.ViewHolder
                 "出货时间:"+th.getTime()+System.getProperty("line.separator")+ "商品单价："+th.getPrice_out()+System.getProperty("line.separator")+
                 "销量:"+th.getNum()+System.getProperty("line.separator");
         holder.thingsname.setText(context);
-        //Glide.with(mContext).load().into(holder.thingsimage);
     }
     @Override
     public int getItemCount(){

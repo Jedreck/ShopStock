@@ -9,7 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+
 import com.example.jedreck.shopstock.Bean.OutBean;
+import com.example.jedreck.shopstock.Bean.StockBean;
+import com.example.jedreck.shopstock.FullInfoActivity.FullInfoActivity;
 import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.MajorSearch.MainActivity;
 import com.example.jedreck.shopstock.R;

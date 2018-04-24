@@ -31,7 +31,6 @@ public class StockBeanAdapter extends ArrayAdapter<StockBean> {
         ViewHolder viewHolder;
         if (convertView == null) {
             view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
-//            view = LayoutInflater.from(getContext()).inflate(R.layout.stockbean_item, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.pic=view.findViewById(R.id.pic);
             viewHolder.name = (TextView) view.findViewById (R.id.name);
