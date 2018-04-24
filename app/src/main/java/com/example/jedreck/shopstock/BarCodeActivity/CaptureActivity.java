@@ -32,6 +32,7 @@ import com.example.jedreck.shopstock.BarCodeActivity.utils.CaptureActivityHandle
 import com.example.jedreck.shopstock.BarCodeActivity.utils.InactivityTimer;
 import com.example.jedreck.shopstock.Bean.StockBean;
 import com.example.jedreck.shopstock.FullInfoActivity.FullInfoActivity;
+import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.R;
 import com.example.jedreck.shopstock.Store.StoreMain;
 import com.example.jedreck.shopstock.Store.Storeno;
@@ -213,12 +214,10 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback 
                     RequestBody requestBody = new FormBody.Builder()
                             .add("id", input)
                             .build();
-                    Request request = new Request.Builder()
-                            .url("http://pvrfix.natappfree.cc/storage/SearchIDLite_Servlet")
-                            .post(requestBody)
-                            .build();
+                    Request request = RequestManager.getIDLite(requestBody);
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
+                    Log.d(TAG, "run: OkHttp response --- "+responseData);
                     StockBean stockBean = StockBean.josn2Objective(responseData);
                     String r = stockBean.getId();
                     if (r.equals("000000")) {
