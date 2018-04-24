@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.jedreck.shopstock.BarCodeActivity.CaptureActivity;
 import com.example.jedreck.shopstock.Bean.StockBean;
+import com.example.jedreck.shopstock.Internet.RequestManager;
 import com.example.jedreck.shopstock.MajorSearch.MainActivity;
 import com.example.jedreck.shopstock.OUTPart.OutActivity;
 import com.example.jedreck.shopstock.R;
@@ -109,42 +111,37 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
             startActivity(intent);
         }
     }
-    private void sendRequestWithOkHttp(){
+    private void sendRequestWithOkHttp() {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try{
-                    OkHttpClient client= new OkHttpClient();
+                try {
+                    OkHttpClient client = new OkHttpClient();
                     RequestBody requestBody = new FormBody.Builder()
-                            .add("id",input)
+                            .add("id", input)
                             .build();
-                    Request request = new Request.Builder()
-                            .url("http://pvrfix.natappfree.cc/storage/SearchIDLite_Servlet")
-                            .post(requestBody)
-                            .build();
+                    Request request = RequestManager.getIDLite(requestBody);
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
-                    StockBean stockBean=StockBean.josn2Objective(responseData);
-                    String r=stockBean.getId();
-                 if(r.equals("000000"))
-                {
-                    Intent intent=new Intent(StoreMain.this,Storeno.class);
-                    intent.putExtra("id",input);
-                    startActivity(intent);
-                }
-                else
-                {
-                   Intent intent1=new Intent(StoreMain.this,Storeyes.class);
-                   String s1,s2,s3,s4;
-                       s1=stockBean.getId();
-                       intent1.putExtra("id",s1);
-                        s2=stockBean.getName();
-                       intent1.putExtra("name",s2);
-                        s3=stockBean.getPrice();
-                       intent1.putExtra("price",s3);
-                        s4=stockBean.getStock();
-                       intent1.putExtra("stock",s4);
-                    startActivity(intent1);
+                  //  Log.d(TAG, "run: OkHttp response --- "+responseData);
+                    StockBean stockBean = StockBean.josn2Objective(responseData);
+                    String r = stockBean.getId();
+                    if (r.equals("000000")) {
+                        Intent intent = new Intent(StoreMain.this, Storeno.class);
+                        intent.putExtra("id", input);
+                        startActivity(intent);
+                    } else {
+                        Intent intent1 = new Intent(StoreMain.this, Storeyes.class);
+                        String s1, s2, s3, s4;
+                        s1 = stockBean.getId();
+                        intent1.putExtra("id", s1);
+                        s2 = stockBean.getName();
+                        intent1.putExtra("name", s2);
+                        s3 = stockBean.getPrice();
+                        intent1.putExtra("price", s3);
+                        s4 = stockBean.getStock();
+                        intent1.putExtra("stock", s4);
+                        startActivity(intent1);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

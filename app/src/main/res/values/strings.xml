@@ -4,7 +4,7 @@
     <string name="title_shop">shop</string>
     <string name="title_in">in</string>
     <string name="title_out">out</string>
-    <string name="title_activity_storeyes">Storeyes</string>
+    <string name="title_activity_storeyes">入库</string>
     <string name="permission_camera_rationale">需要相机权限才能进行相机预览。</string>
     <string name="ok">确定</string>
     <string name="BarCode_Text">条码：</string>
@@ -12,10 +12,7 @@
     <string name="Price_Text">售价：</string>
     <string name="Stock_Text">库存：</string>
     <string name="title_activity_detail">DetailActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_storeno">Storeno</string>
+    <string name="title_activity_storeno">入库</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_start">StartActivity</string>
     <string name="b_name">员工守则</string>
