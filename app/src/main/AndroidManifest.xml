@@ -10,6 +10,8 @@
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
+        android:xlargeScreens="true"
+        />
         android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,7 +19,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
@@ -27,7 +29,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
+        android:largeHeap="true">
         <activity
             android:name=".OUTPart.OutActivity"
             android:label="@string/title_activity_out"
@@ -60,23 +64,29 @@
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan"
             tools:ignore="InnerclassSeparator">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".FullInfoActivity.FullInfoActivity"
-            android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-            tools:ignore="InnerclassSeparator" />
+            tools:ignore="InnerclassSeparator"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".Store.Storeyes"
             android:label="@string/title_activity_storeyes"
             android:launchMode="singleTask"
             tools:ignore="InnerclassSeparator">
+
         </activity>
         <activity
             android:name=".Store.Storeno"
             android:label="@string/title_activity_storeno"
             android:launchMode="singleTask"
             tools:ignore="InnerclassSeparator" />
+
         <activity
             android:name=".Store.StoreMain"
             android:launchMode="singleTask"

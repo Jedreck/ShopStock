@@ -5,7 +5,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 public class RequestManager {
-    private static String URL = "http://pvrfix.natappfree.cc/storage/";
+    private static String URL = "http://fn6jt9.natappfree.cc/storage/";
 
     //获取当日销量前十
     public static Request getSaleWell() {

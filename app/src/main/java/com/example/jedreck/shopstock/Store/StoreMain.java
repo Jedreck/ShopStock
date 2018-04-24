@@ -2,6 +2,7 @@ package com.example.jedreck.shopstock.Store;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -189,17 +191,21 @@ public class StoreMain extends AppCompatActivity implements View.OnClickListener
     }
     private void initCargo()
     {
-        Cargo binggan=new Cargo("雀巢脆脆鲨威化奶香巧克力夹心饼干500g散装休闲食品零食包邮喜糖20.0/件",R.drawable.binggan);
-        cargoList.add(binggan);
-        Cargo benzi=new Cargo("十二星座小清新大学生笔记本加厚复古韩国日记本子简约创意记事本40.0/件",R.drawable.benzi);
-        cargoList.add(benzi);
-        Cargo gangbi=new Cargo("包邮批发 爱好墨囊钢笔小学生抽墨水墨囊两用 学生写字练字钢笔100.0/件",R.drawable.gangbi);
+        Cargo suannai=new Cargo("新希望airsnow轻爱常温原味酸奶整箱200g*12盒 巴氏杀菌酸牛奶40.0/件",R.drawable.suannai);
+        cargoList.add(suannai);
+        Cargo gangbi=new Cargo("包邮批发爱好墨囊钢笔小学生抽墨水墨囊两用学生写字练字钢笔100.0/件",R.drawable.gangbi);
         cargoList.add(gangbi);
         Cargo maojin=new Cargo("洁丽雅毛巾纯棉男士英伦全棉洗脸批发吸水大毛巾家用成人柔软面巾16.0/件",R.drawable.maojin);
         cargoList.add(maojin);
-        Cargo suannai=new Cargo("新希望 airsnow轻爱常温原味酸奶整箱200g*12盒 巴氏杀菌酸牛奶40.0/件",R.drawable.suannai);
-        cargoList.add(suannai);
-        Cargo yagao=new Cargo("高露洁光感劲白牙膏120g*6 家庭大包装 美白去除牙渍30.0/件",R.drawable.yagao);
+        Cargo wanju=new Cargo("恐龙抱枕公仔玩偶毛绒玩具女生可爱萌韩国睡觉抱女孩布娃娃礼物",R.drawable.wanju);
+        cargoList.add(wanju);
+        Cargo jingzi=new Cargo("欧式双面大号台式高清化妆镜随身便携公主梳妆镜美容院折叠小镜子",R.drawable.jingzi);
+        cargoList.add(jingzi);
+        Cargo benzi=new Cargo("十二星座小清新大学生笔记本加厚复古韩国日记本子简约创意记事本40.0/件",R.drawable.benzi);
+        cargoList.add(benzi);
+        Cargo yagao=new Cargo("高露洁光感劲白牙膏120g*6 家庭大包装美白去除牙渍30.0/件",R.drawable.yagao);
         cargoList.add(yagao);
+        Cargo binggan=new Cargo("雀巢脆脆鲨威化奶香巧克力夹心饼干500g散装休闲食品零食包邮喜糖20.0/件",R.drawable.binggan);
+        cargoList.add(binggan);
     }
 }
