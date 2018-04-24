@@ -204,17 +204,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // 在这里进行UI操作，将结果显示到界面上
-                if(stockBeanList.size()!=0){
-                    //上次将listview清空后，需要将textview提示框清空并重新添加listview
-                    /*if(listView==null)
-                    l.addView(listView);*/
-                    adapter=new StockBeanAdapter(MainActivity.this,R.layout.stockbean_item,stockBeanList);
-                    listView.setAdapter(adapter);
-                }
-                else
-                {
+                if(stockBeanList.size()==0){
                     Toast.makeText(MainActivity.this,"尚无此类商品",Toast.LENGTH_LONG).show();
                 }
+                adapter=new StockBeanAdapter(MainActivity.this,R.layout.stockbean_item,stockBeanList);
+                listView.setAdapter(adapter);
             }
         });
     }

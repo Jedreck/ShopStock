@@ -41,7 +41,7 @@ public class StockBeanAdapter extends ArrayAdapter<StockBean> {
             view = convertView;
             viewHolder = (ViewHolder) view.getTag(); // 重新获取ViewHolder
         }
-        viewHolder.pic.setImageResource(R.drawable.app_icon);
+        viewHolder.pic.setImageResource(R.drawable.muyulu);
         viewHolder.name.setText(stockBean.getName());
         viewHolder.price.setText(stockBean.getPrice());
         viewHolder.stock.setText(stockBean.getStock());

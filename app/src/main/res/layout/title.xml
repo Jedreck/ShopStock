@@ -5,8 +5,8 @@
     android:background="@color/colorPrimary">
     <ImageButton
         android:id="@+id/scan"
-        android:layout_width="53dp"
-        android:layout_height="53dp"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
         android:layout_gravity="center"
         android:adjustViewBounds="false"
         android:background="@drawable/scan" />
