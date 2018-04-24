@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">超库</string>
-    <string name="title_activity_out">销售Top10</string>
+    <string name="title_activity_out">日销售Top10</string>
     <string name="title_shop">shop</string>
     <string name="title_in">in</string>
     <string name="title_out">out</string>
@@ -18,10 +18,8 @@
     <string name="title_activity_storeno">Storeno</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_start">StartActivity</string>
-    <string name="a_name">超市发展</string>
     <string name="b_name">员工守则</string>
     <string name="c_name">业绩</string>
-    <string name="d_name">商品情况</string>
     <string name="e_name">名言警句</string>
     <string name="Wait_in">亟待补货</string>
 </resources>
